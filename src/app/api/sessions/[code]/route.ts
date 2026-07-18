@@ -1,6 +1,16 @@
 import { NextResponse } from "next/server";
+import { ZodError } from "zod";
+import {
+  enforceRateLimit,
+  RateLimitError,
+  requestFingerprint,
+} from "@/lib/rate-limit";
+import {
+  parseSessionAction,
+  teacherActionTypes,
+} from "@/lib/session-action";
 import { applyAction, getSession, subscribe } from "@/lib/session-store";
-import type { SessionAction } from "@/lib/types";
+import { isTeacherAuthorized } from "@/lib/teacher-access";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -75,10 +85,74 @@ export async function POST(
 ): Promise<NextResponse> {
   const { code } = await context.params;
   try {
-    const action = (await request.json()) as SessionAction;
+    const contentLength = Number(request.headers.get("content-length") ?? 0);
+    if (contentLength > 16_384) {
+      return NextResponse.json(
+        { error: "Request body is too large" },
+        { status: 413 },
+      );
+    }
+
+    const fingerprint = requestFingerprint(request);
+    await enforceRateLimit(`post:${fingerprint}`, 60, 60);
+
+    const body = (await request.json()) as unknown;
+    if (
+      typeof body === "object" &&
+      body !== null &&
+      "type" in body &&
+      body.type === "verify_teacher_access"
+    ) {
+      await enforceRateLimit(`teacher-auth:${fingerprint}`, 8, 15 * 60);
+      if (!isTeacherAuthorized(request)) {
+        return NextResponse.json(
+          { error: "Teacher access code is incorrect" },
+          { status: 401 },
+        );
+      }
+      return NextResponse.json({ authorized: true });
+    }
+
+    const action = parseSessionAction(body);
+    if (teacherActionTypes.has(action.type)) {
+      if (!isTeacherAuthorized(request)) {
+        return NextResponse.json(
+          { error: "Teacher authorization is required" },
+          { status: 401 },
+        );
+      }
+      await enforceRateLimit(`teacher:${fingerprint}`, 30, 10 * 60);
+    }
+
+    if (action.type === "join") {
+      await enforceRateLimit(`join:${fingerprint}`, 12, 10 * 60);
+    }
+    if (action.type === "respond") {
+      await enforceRateLimit(`respond:${fingerprint}`, 8, 10 * 60);
+    }
+    if (action.type === "generate_suggestion") {
+      await enforceRateLimit(`generate:${fingerprint}`, 4, 10 * 60);
+      await enforceRateLimit("generate:global", 20, 24 * 60 * 60);
+    }
+
     const session = await applyAction(code, action);
     return NextResponse.json(session);
   } catch (error) {
+    if (error instanceof RateLimitError) {
+      return NextResponse.json(
+        { error: error.message },
+        {
+          status: 429,
+          headers: { "Retry-After": String(error.retryAfterSeconds) },
+        },
+      );
+    }
+    if (error instanceof ZodError) {
+      return NextResponse.json(
+        { error: "Invalid classroom action" },
+        { status: 400 },
+      );
+    }
     const message =
       error instanceof Error ? error.message : "Unable to update the session";
     return NextResponse.json({ error: message }, { status: 400 });

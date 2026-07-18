@@ -10,6 +10,8 @@ Target runtime: **2:25–2:40**. The submitted YouTube video must remain under
   - teacher: `/teacher`
   - student: `/join/MARS24`
   - classroom display: `/display/MARS24`
+- Unlock the teacher window with the access code supplied in the private judge
+  instructions, then cut the unlock step from the final video.
 - Reset the demo from the teacher window.
 - Keep browser zoom between 80% and 90% so the important controls remain
   visible.

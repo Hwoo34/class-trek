@@ -84,6 +84,7 @@ Add the following values to `.env.local`:
 |---|---:|---|
 | `OPENAI_API_KEY` | For live AI | Server-only OpenAI project key. Never commit it. |
 | `OPENAI_MODEL` | No | Defaults to `gpt-5.6-terra`. |
+| `TEACHER_ACCESS_CODE` | Hosted demo | Server-only code required for teacher controls and AI generation. |
 | `AI_PROVIDER` | No | `openai`, `lmstudio`, or `fallback`. Defaults to OpenAI when a key exists. |
 | `MODERATION_PROVIDER` | No | `openai` for the judging demo or `local` for cost-free local testing. |
 | `LM_STUDIO_BASE_URL` | For local AI | Defaults to `http://127.0.0.1:1234/v1`. |
@@ -167,6 +168,10 @@ The AI is a co-host, not the classroom authority.
 - GPT-5.6 may propose a branch but cannot advance the lesson.
 - Every generated factual scene must reference an approved source.
 - An AI or moderation outage fails closed and leaves the current lesson usable.
+- Hosted teacher commands require a server-verified access code.
+- Requests are limited by hashed network fingerprint and action type; GPT
+  generation is capped at four requests per 10 minutes per client and 20 per
+  day across the demo.
 
 The demo intentionally collects no email, age, location, voice, camera, or
 persistent student profile. Nicknames and responses live only in the running

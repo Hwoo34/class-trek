@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import {
   Check,
   Eye,
@@ -27,14 +29,112 @@ function statusLabel(status: string): string {
 }
 
 export function TeacherConsole({ code }: TeacherConsoleProps) {
+  const [accessCode, setAccessCode] = useState("");
+  const [accessGranted, setAccessGranted] = useState(
+    process.env.NODE_ENV === "development",
+  );
+  const [accessError, setAccessError] = useState<string | null>(null);
+  const [checkingAccess, setCheckingAccess] = useState(false);
   const { session, loading, connected, error, send } =
-    useClassroomSession(code);
+    useClassroomSession(code, accessGranted ? accessCode : undefined);
+
+  async function verifyTeacherAccess(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
+    event.preventDefault();
+    setCheckingAccess(true);
+    setAccessError(null);
+
+    try {
+      const response = await fetch(`/api/sessions/${code}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-class-trek-teacher-access": accessCode,
+        },
+        body: JSON.stringify({ type: "verify_teacher_access" }),
+      });
+      const payload = (await response.json()) as
+        | { authorized: true }
+        | { error: string };
+      if (!response.ok || !("authorized" in payload)) {
+        throw new Error(
+          "error" in payload ? payload.error : "Unable to verify access",
+        );
+      }
+      setAccessGranted(true);
+    } catch (requestError) {
+      setAccessError(
+        requestError instanceof Error
+          ? requestError.message
+          : "Unable to verify teacher access",
+      );
+    } finally {
+      setCheckingAccess(false);
+    }
+  }
 
   if (loading) {
     return <div className="loading">Opening Mission Control…</div>;
   }
   if (!session) {
     return <div className="error-box">{error ?? "Session unavailable"}</div>;
+  }
+
+  if (!accessGranted) {
+    return (
+      <main className="app-shell">
+        <AppHeader
+          label="Teacher Mission Control"
+          status={`Protected · ${code}`}
+        />
+        <div className="student-wrap">
+          <section className="card student-card">
+            <p className="eyebrow">Teacher-only controls</p>
+            <h1>Enter Mission Control</h1>
+            <p className="lede" style={{ fontSize: 15 }}>
+              Student participation stays open, while lesson controls and AI
+              generation require the teacher access code.
+            </p>
+            <form className="join-grid" onSubmit={verifyTeacherAccess}>
+              <input
+                aria-label="Teacher access code"
+                autoComplete="off"
+                maxLength={80}
+                placeholder="Teacher access code"
+                type="password"
+                value={accessCode}
+                onChange={(event) => {
+                  setAccessCode(event.target.value);
+                  setAccessError(null);
+                }}
+              />
+              <button
+                className="button button-cyan"
+                type="submit"
+                disabled={!accessCode.trim() || checkingAccess}
+              >
+                {checkingAccess ? (
+                  <LoaderCircle className="spin" size={15} />
+                ) : (
+                  <ShieldAlert size={15} />
+                )}
+                Unlock controls
+              </button>
+            </form>
+            {accessError ? (
+              <div className="error-box" role="alert">
+                {accessError}
+              </div>
+            ) : null}
+            <div className="safety-note">
+              The access code is sent only to the server for verification and
+              is never included in the classroom session state.
+            </div>
+          </section>
+        </div>
+      </main>
+    );
   }
 
   const safeResponses = session.responses.filter(

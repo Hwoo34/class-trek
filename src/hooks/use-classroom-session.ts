@@ -11,7 +11,10 @@ interface UseClassroomSession {
   send: (action: SessionAction) => Promise<ClassroomSession | null>;
 }
 
-export function useClassroomSession(code: string): UseClassroomSession {
+export function useClassroomSession(
+  code: string,
+  teacherAccessCode?: string,
+): UseClassroomSession {
   const [session, setSession] = useState<ClassroomSession | null>(null);
   const [loading, setLoading] = useState(true);
   const [connected, setConnected] = useState(false);
@@ -71,7 +74,12 @@ export function useClassroomSession(code: string): UseClassroomSession {
       try {
         const response = await fetch(`/api/sessions/${code}`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            ...(teacherAccessCode
+              ? { "x-class-trek-teacher-access": teacherAccessCode }
+              : {}),
+          },
           body: JSON.stringify(action),
         });
         const payload = (await response.json()) as
@@ -92,7 +100,7 @@ export function useClassroomSession(code: string): UseClassroomSession {
         return null;
       }
     },
-    [code],
+    [code, teacherAccessCode],
   );
 
   return { session, loading, connected, error, send };

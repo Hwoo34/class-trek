@@ -48,6 +48,9 @@ and make the impact case concrete in the final video and description.
 - [x] Teacher approval advanced the canonical version once.
 - [x] Student and display converged on the same next scene.
 - [x] A refreshed student rejoined at the current approved scene.
+- [x] Hosted teacher commands require server-verified access.
+- [x] Repeated authentication attempts return `429`; model generation is
+      limited per client and per day.
 - [x] A paid local smoke test produced a structured proposal labeled
       `gpt-5.6` with approved NASA source IDs.
 - [x] `.env.local` is covered by `.gitignore`.
@@ -76,9 +79,7 @@ and make the impact case concrete in the final video and description.
 
 ## High-priority hardening before recording
 
-- [ ] Add a signed or authenticated teacher authority boundary. The current
-      hackathon UI expresses teacher controls, but the prototype API does not
-      yet authenticate commands.
+- [x] Add an authenticated teacher authority boundary.
 - [ ] Add action IDs/idempotency for duplicate student submissions.
 - [ ] Add participant rate limiting.
 - [ ] Add a reconnect test that reloads a student after scene publication.
@@ -95,7 +96,7 @@ and make the impact case concrete in the final video and description.
 | Country of residence | Missing |
 | Education category | Ready |
 | Repository URL | Ready: <https://github.com/Hwoo34/class-trek> |
-| Judge demo URL/instructions | Ready: <https://class-trek.vercel.app> |
+| Judge demo URL/instructions | URL ready; add the teacher access code only to the private judge instructions |
 | `/feedback` Session ID | Missing |
 | Public YouTube URL | Missing |
 
