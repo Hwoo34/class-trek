@@ -10,7 +10,11 @@ import {
   teacherActionTypes,
 } from "@/lib/session-action";
 import { applyAction, getSession, subscribe } from "@/lib/session-store";
-import { isTeacherAuthorized } from "@/lib/teacher-access";
+import {
+  getTeacherSessionValue,
+  isTeacherAuthorized,
+  teacherSessionCookie,
+} from "@/lib/teacher-access";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -116,14 +120,27 @@ export async function POST(
       "type" in body &&
       body.type === "verify_teacher_access"
     ) {
-      await enforceRateLimit(`teacher-auth:${fingerprint}`, 8, 15 * 60);
       if (!isTeacherAuthorized(request)) {
+        await enforceRateLimit(`teacher-auth:${fingerprint}`, 8, 15 * 60);
         return NextResponse.json(
           { error: "Teacher access code is incorrect" },
           { status: 401 },
         );
       }
-      return NextResponse.json({ authorized: true });
+      const response = NextResponse.json({ authorized: true });
+      const sessionValue = getTeacherSessionValue();
+      if (sessionValue) {
+        response.cookies.set({
+          name: teacherSessionCookie,
+          value: sessionValue,
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "lax",
+          maxAge: 4 * 60 * 60,
+          path: "/",
+        });
+      }
+      return response;
     }
 
     const action = parseSessionAction(body);

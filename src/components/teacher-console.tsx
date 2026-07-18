@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import {
   Check,
@@ -38,6 +38,26 @@ export function TeacherConsole({ code }: TeacherConsoleProps) {
   const { session, loading, connected, error, send } =
     useClassroomSession(code, accessGranted ? accessCode : undefined);
 
+  useEffect(() => {
+    if (process.env.NODE_ENV === "development") return;
+
+    const controller = new AbortController();
+    void fetch(`/api/sessions/${code}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "verify_teacher_access" }),
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (response.ok) setAccessGranted(true);
+      })
+      .catch(() => {
+        // No session cookie yet; keep the explicit access form visible.
+      });
+
+    return () => controller.abort();
+  }, [code]);
+
   async function verifyTeacherAccess(
     event: FormEvent<HTMLFormElement>,
   ): Promise<void> {
@@ -62,6 +82,7 @@ export function TeacherConsole({ code }: TeacherConsoleProps) {
           "error" in payload ? payload.error : "Unable to verify access",
         );
       }
+      setAccessCode("");
       setAccessGranted(true);
     } catch (requestError) {
       setAccessError(

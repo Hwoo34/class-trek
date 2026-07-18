@@ -38,4 +38,18 @@ describe("teacher authorization", () => {
     expect(isTeacherAuthorized(wrong)).toBe(false);
     expect(isTeacherAuthorized(correct)).toBe(true);
   });
+
+  it("accepts the derived HttpOnly session value without the access code", async () => {
+    process.env.TEACHER_ACCESS_CODE = "mission-control";
+    const { getTeacherSessionValue, teacherSessionCookie } = await import(
+      "@/lib/teacher-access"
+    );
+    const sessionValue = getTeacherSessionValue();
+    const request = new Request("https://example.test", {
+      headers: { cookie: `${teacherSessionCookie}=${sessionValue}` },
+    });
+
+    expect(isTeacherAuthorized(request)).toBe(true);
+    expect(sessionValue).not.toContain("mission-control");
+  });
 });
