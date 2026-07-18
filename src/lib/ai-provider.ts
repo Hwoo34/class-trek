@@ -44,7 +44,7 @@ export function getGenerationProvider(): GenerationProvider | null {
       client: new OpenAI({
         apiKey: process.env.OPENAI_API_KEY,
         maxRetries: 0,
-        timeout: 20_000,
+        timeout: 50_000,
       }),
       model: process.env.OPENAI_MODEL ?? "gpt-5.6-terra",
       provider,

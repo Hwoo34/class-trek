@@ -14,6 +14,7 @@ import { isTeacherAuthorized } from "@/lib/teacher-access";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 interface RouteContext {
   params: Promise<{ code: string }>;
