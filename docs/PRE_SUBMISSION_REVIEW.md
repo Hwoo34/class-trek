@@ -33,7 +33,7 @@ and make the impact case concrete in the final video and description.
 
 ## Verified
 
-- [x] `pnpm test`: 7 files, 20 tests passed.
+- [x] `pnpm test`: 7 files, 21 tests passed.
 - [x] `pnpm lint`: passed.
 - [x] `pnpm build`: passed.
 - [x] Production deployment: <https://class-trek.vercel.app>.

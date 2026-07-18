@@ -265,7 +265,7 @@ three server-approved NASA source IDs, three structured choices, and a
 teacher-only review boundary. The request completed in 23.1 seconds; after
 approval, teacher, student, and display surfaces converged on version 24.
 
-The suite currently has 20 passing tests across guardrails, provider selection,
+The suite currently has 21 passing tests across guardrails, provider selection,
 class-pulse aggregation, and monotonic session recovery. Provider-selection
 tests also verify that unit tests cannot accidentally spend OpenAI credits. The
 production build and lint checks pass.
@@ -274,9 +274,10 @@ production build and lint checks pass.
 
 - The deployed demo uses Vercel Runtime Cache as a shared, 30-day checkpoint;
   it is an ephemeral cache, not a durable student-record database.
-- A school production release still needs durable storage, authenticated
-  teacher sessions, participant rate limiting, and a shared event bus for
-  horizontal scaling.
+- A school production release still needs durable storage, identity-backed
+  individual teacher accounts, participant rate limiting, and a shared event
+  bus for horizontal scaling. The hosted judge demo currently uses a signed,
+  HttpOnly teacher session derived from its server-only access code.
 - The prototype uses SSE with polling fallback rather than a managed realtime
   service.
 - The keyword guardrail is a deterministic first layer, not a replacement for

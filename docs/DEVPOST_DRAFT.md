@@ -71,7 +71,7 @@ real-time state.]
 
 ## What's next
 
-- durable event storage and authenticated teacher sessions;
+- durable event storage and identity-backed individual teacher accounts;
 - a shared event bus for horizontally scaled deployment;
 - richer teacher editing before approval;
 - additional source-locked lesson packs;
