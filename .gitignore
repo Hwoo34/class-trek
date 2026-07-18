@@ -1,0 +1,26 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# testing and builds
+/coverage
+/.next/
+/out/
+/.runtime/
+
+# local secrets
+.env
+.env.*
+!.env.example
+
+# logs and editor files
+*.log
+.DS_Store
+
+# hosting
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
