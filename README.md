@@ -25,7 +25,8 @@ survive one night on Mars?**
 - Repository: <https://github.com/Hwoo34/class-trek>
 
 The public demo uses the class code `MARS24`. Use **Reset demo** in the teacher
-console before a clean walkthrough. The fallback keeps the lesson usable when
+console before a clean walkthrough. The teacher access code is supplied in the
+private Devpost judge instructions. The fallback keeps the lesson usable when
 live model access is unavailable and is always labeled; the judging path is
 configured to use GPT-5.6.
 
@@ -218,6 +219,10 @@ Codex was used throughout the build rather than as a one-off code generator.
   rule.
 - Found that moderation service failure held all free text for review, then
   added a teacher approval path so a lesson can safely continue.
+- Found a production-only 20-second GPT timeout, raised the bounded request
+  window, and verified a structured GPT-5.6 response in 23.1 seconds.
+- Found that long-lived SSE requests reached the Function limit, then changed
+  streams to rotate cleanly at 50 seconds with automatic snapshot recovery.
 
 ### Human product, engineering, and design decisions
 
@@ -255,7 +260,12 @@ display contexts. It confirmed:
 - the display version advanced exactly once after approval; and
 - the student and display moved to the same new scene.
 
-The suite currently has 14 passing tests across guardrails, provider selection,
+The production run additionally confirmed a proposal labeled `gpt-5.6` with
+three server-approved NASA source IDs, three structured choices, and a
+teacher-only review boundary. The request completed in 23.1 seconds; after
+approval, teacher, student, and display surfaces converged on version 24.
+
+The suite currently has 20 passing tests across guardrails, provider selection,
 class-pulse aggregation, and monotonic session recovery. Provider-selection
 tests also verify that unit tests cannot accidentally spend OpenAI credits. The
 production build and lint checks pass.

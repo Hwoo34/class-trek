@@ -56,7 +56,8 @@ The Devpost Hackathons app returned the following live form fields on 2026-07-18
 
 ### Required project materials
 
-- [x] A **working project** built with Codex using GPT-5.6.
+- [x] A **working project** built with Codex using GPT-5.6, verified in the
+      protected production deployment.
 - [x] Exactly one category selected: **Education**.
 - [ ] A project description explaining the features and functionality.
 - [ ] A **public YouTube demo video shorter than three minutes**.

@@ -4,8 +4,8 @@ Review date: 2026-07-18 KST
 
 Track: Education
 
-Status: **CONDITIONAL GO — working production build, external submission items
-remain**
+Status: **GO FOR RECORDING — working production build, external submission
+items remain**
 
 ## Executive result
 
@@ -14,26 +14,26 @@ shared-display flow runs against one authoritative session; student input is
 moderated; a class pulse is derived; an AI/fallback proposal waits for teacher
 approval; and all surfaces receive the approved version.
 
-The code, tests, safety contract, README, public repository, and deployed demo
-are ready for finalization. Production GPT-5.6 secret configuration, the public
-video, and submitter-owned Devpost fields remain blockers.
+The code, tests, safety contract, README, public repository, protected deployed
+demo, and live production GPT-5.6 path are ready. The public video and
+submitter-owned Devpost fields remain blockers.
 
 ## Judge-criteria review
 
 | Criterion | Current evidence | Review |
 |---|---|---:|
-| Technological Implementation | Versioned authoritative state, SSE + polling recovery, Vercel shared checkpoint, three real browser contexts, safety pipeline, structured GPT-5.6 route, source validation, stale approval guard, fallback, tests | 8.5/10 |
+| Technological Implementation | Versioned authoritative state, SSE rotation + polling recovery, Vercel shared checkpoint, protected teacher commands, rate limits, three real browser contexts, safety pipeline, production GPT-5.6 structured output, source validation, stale approval guard, fallback, tests | 9/10 |
 | Design | Complete landing, teacher, student, and shared display experience; strong teacher controls; safe empty/error/reconnect states | 8/10 |
 | Potential Impact | Specific teacher problem, whole-class participation, measurable response/pulse/moderation evidence; no unsupported efficacy claims | 7.5/10 |
 | Quality of the Idea | Clear live-branch differentiation from fixed interactive slides and individual tutors | 8/10 |
 
-Internal score: **32/40**. The remaining upside is primarily judge-facing:
+Internal score: **32.5/40**. The remaining upside is primarily judge-facing:
 capture the verified production flow cleanly, show a live `gpt-5.6` proposal,
 and make the impact case concrete in the final video and description.
 
 ## Verified
 
-- [x] `pnpm test`: 4 files, 14 tests passed.
+- [x] `pnpm test`: 7 files, 20 tests passed.
 - [x] `pnpm lint`: passed.
 - [x] `pnpm build`: passed.
 - [x] Production deployment: <https://class-trek.vercel.app>.
@@ -53,27 +53,25 @@ and make the impact case concrete in the final video and description.
       limited per client and per day.
 - [x] A paid local smoke test produced a structured proposal labeled
       `gpt-5.6` with approved NASA source IDs.
+- [x] Production GPT-5.6 returned a structured, source-valid proposal in 23.1
+      seconds and remained private until teacher approval.
+- [x] Teacher, student, and display surfaces converged on the approved GPT-5.6
+      scene at canonical version 24.
+- [x] SSE rotated cleanly at 50.39 seconds before the Function limit; the final
+      deployment produced no warning or error logs during verification.
 - [x] `.env.local` is covered by `.gitignore`.
 - [x] README includes setup, architecture, safety, Codex collaboration,
       GPT-5.6 role, human decisions, limitations, and license.
 
 ## Blocking issues
 
-1. **Production OpenAI secret**
-   - The OpenAI project quota and live `gpt-5.6` smoke test now work.
-   - The production Vercel project is configured for GPT-5.6, but
-     `OPENAI_API_KEY` has not been sent to the third-party host.
-   - Required action: explicitly approve that destination or add the key
-     directly in Vercel, then redeploy and verify one production proposal
-     labeled `gpt-5.6`.
-
-2. **Demo video**
+1. **Demo video**
    - No public YouTube URL exists.
    - A 2:36 storyboard, narration text, and a 1:59 local TTS draft are ready.
    - Required action: record the production flow, edit/export under 3:00,
      upload as Public, and review the final render.
 
-3. **Devpost identity fields**
+2. **Devpost identity fields**
    - Submitter type, country of residence, and `/feedback` Session ID are
      user-owned and still missing.
 
