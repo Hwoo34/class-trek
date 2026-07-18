@@ -80,7 +80,7 @@ real-time state.]
 
 ## Required links and identifiers
 
-- Repository: **[MISSING]**
-- Deployed judge URL: **[MISSING]**
+- Repository: <https://github.com/Hwoo34/class-trek>
+- Deployed judge URL: <https://class-trek.vercel.app>
 - Public YouTube demo under 3:00: **[MISSING]**
 - `/feedback` Session ID: **[MISSING]**

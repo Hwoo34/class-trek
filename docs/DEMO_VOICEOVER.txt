@@ -1,0 +1,19 @@
+Interactive lessons can collect answers, but they rarely adapt to what the whole class is thinking. ClassTrek helps a teacher safely change the lesson with the room.
+
+This is a source-grounded middle-school lesson about surviving on Mars. The teacher remains Mission Control: they can pause the room, inspect responses, and decide what is published.
+
+Students join the same live session from their own devices. They react, choose an answer, and explain their reasoning; the shared display shows only privacy-preserving class signals.
+
+Every accepted action updates one versioned, server-authoritative classroom state. Server-Sent Events deliver changes quickly, while snapshot polling recovers a client after a refresh or missed event.
+
+Student text crosses a deterministic K through twelve guardrail and OpenAI moderation before analysis. This harmful request is blocked; the explicit text is never shown on the classroom display.
+
+GPT-5.6 reads the de-identified class pulse and a teacher-approved NASA source pack. It returns a structured next scene, but source identifiers are validated on the server and the model cannot publish.
+
+Only the teacher can approve the branch. One decision advances the canonical version, and every connected surface moves to the same explanation and follow-up question.
+
+A returning student rejoins the current snapshot instead of falling back to a stale slide. That makes this a working multi-user lesson loop, not a scripted animation.
+
+Codex accelerated the architecture, full-stack implementation, safety tests, browser verification, and release review. I made the key product decisions: whole-class synthesis, anonymous participation, grounded generation, and teacher publishing authority.
+
+ClassTrek turns little moments of student thinking into a shared learning journey, without giving up teacher control.

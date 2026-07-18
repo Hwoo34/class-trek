@@ -7,14 +7,27 @@ in real time.
 
 **OpenAI Build Week track:** Education
 
-Interactive lesson products usually make prepared slides more engaging. Live
-Lesson Lab makes the **lesson path itself responsive**: students react and
+Interactive lesson products usually make prepared slides more engaging.
+ClassTrek makes the **lesson path itself responsive**: students react and
 explain their thinking, the class pulse changes live, GPT-5.6 proposes a
 source-grounded next teaching move, and the teacher decides whether it reaches
 the room.
 
 The sample experience is a middle-school science mission: **Could our class
 survive one night on Mars?**
+
+## Live demo
+
+- App: <https://class-trek.vercel.app>
+- Teacher: <https://class-trek.vercel.app/teacher>
+- Student: <https://class-trek.vercel.app/join/MARS24>
+- Shared display: <https://class-trek.vercel.app/display/MARS24>
+- Repository: <https://github.com/Hwoo34/class-trek>
+
+The public demo uses the class code `MARS24`. Use **Reset demo** in the teacher
+console before a clean walkthrough. The fallback keeps the lesson usable when
+live model access is unavailable and is always labeled; the judging path is
+configured to use GPT-5.6.
 
 ## What works
 
@@ -155,9 +168,9 @@ The AI is a co-host, not the classroom authority.
 - Every generated factual scene must reference an approved source.
 - An AI or moderation outage fails closed and leaves the current lesson usable.
 
-The MVP intentionally collects no email, age, location, voice, camera, or
+The demo intentionally collects no email, age, location, voice, camera, or
 persistent student profile. Nicknames and responses live only in the running
-demo process.
+demo state.
 
 Detailed contracts and test cases are in
 [`docs/SAFETY_AND_PRODUCT.md`](docs/SAFETY_AND_PRODUCT.md).
@@ -215,10 +228,11 @@ The human team retained the key decisions:
 
 ### How GPT-5.6 contributes
 
-The runtime uses `gpt-5.6-terra` for the non-trivial step that follows a live
-class response window: it synthesizes de-identified reasoning and the class
-pulse into one next-scene proposal under a strict JSON schema. The proposal must
-use the approved source IDs and remains private until teacher approval.
+The judging deployment configures `gpt-5.6` for the non-trivial step that
+follows a live class response window: it synthesizes de-identified reasoning
+and the class pulse into one next-scene proposal under a strict JSON schema.
+The proposal must use the approved source IDs and remains private until teacher
+approval.
 
 GPT-5.6 does not moderate student text, control the session, select arbitrary
 web sources, or publish directly. Those boundaries are enforced in application
@@ -236,9 +250,10 @@ display contexts. It confirmed:
 - the display version advanced exactly once after approval; and
 - the student and display moved to the same new scene.
 
-Automated tests cover eight guardrail cases and one aggregate/class-pulse case.
-Provider-selection tests also verify that unit tests cannot accidentally spend
-OpenAI credits. The build and lint checks pass.
+The suite currently has 14 passing tests across guardrails, provider selection,
+class-pulse aggregation, and monotonic session recovery. Provider-selection
+tests also verify that unit tests cannot accidentally spend OpenAI credits. The
+production build and lint checks pass.
 
 ## Prototype boundaries
 

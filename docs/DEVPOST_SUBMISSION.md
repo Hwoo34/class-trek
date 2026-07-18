@@ -24,13 +24,14 @@ These items require the submitter's identity, account access, or an external pub
 
 | Item | Required value | Status |
 |---|---|---|
-| **Code repository URL** | Public repository with a relevant license, or private repository shared with both judging addresses | **MISSING — USER ONLY** |
+| **Code repository URL** | <https://github.com/Hwoo34/class-trek> (public, MIT) | **READY** |
 | **Public YouTube URL** | Publicly visible video, strictly under 3:00, with audio | **MISSING — USER ONLY** |
 | **`/feedback` Codex Session ID** | Session ID from the project thread where the majority of core functionality was built | **MISSING — USER ONLY** |
 | **Country of residence** | Must be selected in the Devpost form and satisfy the Official Rules | **MISSING — USER ONLY** |
 | **Submitter type** | Exactly one of `Individual`, `Team of Individuals`, or `Organization` | **MISSING — USER ONLY** |
 
-Do not mark the submission ready until all five values are filled in and independently verified.
+Do not mark the submission ready until the four remaining user-owned values are
+filled in and independently verified.
 
 ## Exact required submission fields and deliverables
 
@@ -55,8 +56,8 @@ The Devpost Hackathons app returned the following live form fields on 2026-07-18
 
 ### Required project materials
 
-- [ ] A **working project** built with Codex using GPT-5.6.
-- [ ] Exactly one category selected: **Education**.
+- [x] A **working project** built with Codex using GPT-5.6.
+- [x] Exactly one category selected: **Education**.
 - [ ] A project description explaining the features and functionality.
 - [ ] A **public YouTube demo video shorter than three minutes**.
 - [ ] Demo audio clearly covers:
@@ -65,15 +66,15 @@ The Devpost Hackathons app returned the following live form fields on 2026-07-18
   - [ ] how GPT-5.6 was used.
 - [ ] The video shows the project actually working.
 - [ ] The video contains no unlicensed music, copyrighted material, or third-party trademarks without permission.
-- [ ] A code repository URL suitable for judging and testing.
-- [ ] A README with setup instructions, sample data where needed, and clear run/test guidance.
+- [x] A code repository URL suitable for judging and testing.
+- [x] A README with setup instructions, sample data where needed, and clear run/test guidance.
 - [ ] The README explains:
   - [ ] where Codex accelerated the workflow;
   - [ ] where the human team made key product, engineering, and design decisions;
   - [ ] how GPT-5.6 contributed; and
   - [ ] how Codex contributed to the final result.
 - [ ] The primary `/feedback` Codex Session ID.
-- [ ] A website, functioning demo, or test build available **free of charge and without restriction through the end of judging**.
+- [x] A website, functioning demo, or test build available **free of charge and without restriction through the end of judging**: <https://class-trek.vercel.app>.
 - [ ] All submitted materials are in English, or include an English translation.
 - [ ] If this was a pre-existing project, documentation clearly separates work before July 13 from new work, supported by dated commits, Codex session evidence, or equivalent. Preferably confirm this is a new project created during the submission period.
 - [ ] Every third-party SDK, API, dataset, image, video, font, and other asset is used under valid terms or a compatible license.
