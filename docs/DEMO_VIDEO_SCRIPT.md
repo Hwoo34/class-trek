@@ -1,7 +1,11 @@
 # ClassTrek demo video runbook
 
-Target runtime: **2:25–2:40**. The submitted YouTube video must remain under
-3:00 and include audio.
+> This is the original recording runbook. The edited v2 candidate is
+> `artifacts/ClassTrek-demo-v2-captioned.mp4` at **2:04.4** with English
+> narration and burned-in English captions. Its final narration is in
+> `docs/DEMO_VOICEOVER_V2.txt`.
+
+The submitted YouTube video must remain under 3:00 and include audio.
 
 ## Recording setup
 

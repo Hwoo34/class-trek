@@ -3,6 +3,9 @@
 > This is a structured draft, not submission-ready prose. The official host
 > explicitly asks entrants not to submit an AI-written description as-is.
 > Rewrite this in the submitter's own voice and replace every bracketed item.
+>
+> A complete review draft now lives in `docs/DEVPOST_FINAL_DRAFT.md`; retain
+> this file only as the earlier worksheet.
 
 ## Project title
 

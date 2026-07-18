@@ -4,8 +4,8 @@ Review date: 2026-07-18 KST
 
 Track: Education
 
-Status: **GO FOR RECORDING — working production build, external submission
-items remain**
+Status: **GO FOR YOUTUBE UPLOAD — working production build and captioned local
+video are ready; external submission items remain**
 
 ## Executive result
 
@@ -15,8 +15,8 @@ moderated; a class pulse is derived; an AI/fallback proposal waits for teacher
 approval; and all surfaces receive the approved version.
 
 The code, tests, safety contract, README, public repository, protected deployed
-demo, and live production GPT-5.6 path are ready. The public video and
-submitter-owned Devpost fields remain blockers.
+demo, live production GPT-5.6 path, and captioned 2:04 video are ready. The
+public YouTube URL and submitter-owned Devpost fields remain blockers.
 
 ## Judge-criteria review
 
@@ -33,7 +33,7 @@ and make the impact case concrete in the final video and description.
 
 ## Verified
 
-- [x] `pnpm test`: 7 files, 21 tests passed.
+- [x] `pnpm test`: 8 files, 22 tests passed.
 - [x] `pnpm lint`: passed.
 - [x] `pnpm build`: passed.
 - [x] Production deployment: <https://class-trek.vercel.app>.
@@ -67,13 +67,17 @@ and make the impact case concrete in the final video and description.
 
 1. **Demo video**
    - No public YouTube URL exists.
-   - A 2:36 storyboard, narration text, and a 1:59 local TTS draft are ready.
-   - Required action: record the production flow, edit/export under 3:00,
-     upload as Public, and review the final render.
+   - A 2:04.4 English TTS video with burned-in English captions is ready at
+     `artifacts/ClassTrek-demo-v2-captioned.mp4`.
+   - Required action: upload as Public, verify it while signed out, and add the
+     URL to Devpost.
 
 2. **Devpost identity fields**
    - Submitter type, country of residence, and `/feedback` Session ID are
      user-owned and still missing.
+   - Devpost project `1335631` is published as
+     <https://devpost.com/software/classtrek>, but the OpenAI Build Week entry
+     still reports `submitted_at: null`.
 
 ## High-priority hardening before recording
 

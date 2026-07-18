@@ -1,0 +1,20 @@
+Most interactive lessons collect answers, but the lesson itself stays fixed. ClassTrek lets student thinking safely change what happens next.
+This is a working, source-grounded middle-school lesson about surviving one night on Mars.
+The teacher remains Mission Control. They can pause the room, inspect the class pulse, and decide what is published.
+Students join the same session on their own devices. They react, choose an answer, and explain their reasoning.
+The shared display shows only privacy-preserving class signals, never a public speed leaderboard.
+Every accepted action updates one server-authoritative, versioned classroom state.
+Server-Sent Events synchronize the three surfaces, and snapshot recovery handles refreshes.
+Before analysis, student text passes deterministic K through twelve checks and OpenAI moderation.
+A harmful response is blocked and hidden from the class.
+The teacher sees the safety decision, while the display never receives the explicit text.
+Now the teacher asks ClassTrek to read the room.
+GPT-5.6 combines de-identified reasoning, the aggregate class pulse, and a teacher-approved NASA source pack into a structured next-scene proposal.
+The server validates every source identifier. The proposal stays in teacher review; the model cannot publish it.
+Only the teacher can approve the branch.
+One decision advances the canonical version, and student and display screens move to the same explanation.
+A returning student rejoins the current snapshot instead of a stale slide. This is a real multi-user lesson loop, not a scripted mock-up.
+Codex helped turn the idea into explicit safety and realtime contracts, then accelerated the Next.js implementation, tests, and three-browser verification.
+Codex also exposed production-only failures: GPT-5.6 needed a longer bounded response window, and realtime streams needed graceful rotation before the serverless limit.
+I kept the key product decisions human: anonymous whole-class synthesis, grounded generation, and teacher publishing authority.
+ClassTrek turns small moments of student thinking into one shared learning journey. Together.

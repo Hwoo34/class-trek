@@ -1,6 +1,9 @@
 # OpenAI Build Week — Submission and Judging Checklist
 
 > Internal pre-submission document. Do not submit this file as-is without checking every item against the final build and rewriting the public project description in the team's own voice.
+>
+> Final status is tracked in `docs/FINAL_SUBMISSION_AUDIT.md`; this longer
+> document remains the detailed strategy reference.
 
 ## Current official status
 

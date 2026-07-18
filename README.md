@@ -223,6 +223,11 @@ Codex was used throughout the build rather than as a one-off code generator.
   window, and verified a structured GPT-5.6 response in 23.1 seconds.
 - Found that long-lived SSE requests reached the Function limit, then changed
   streams to rotate cleanly at 50 seconds with automatic snapshot recovery.
+- Found an intermittent truncated structured response and then an unsupported
+  tuple schema from the first parser hardening pass. Replaced manual parsing
+  with the OpenAI SDK's Zod parser, emitted a supported fixed-length array
+  schema, added a regression test, and re-verified a real `gpt-5.6` proposal in
+  production.
 
 ### Human product, engineering, and design decisions
 
@@ -265,7 +270,7 @@ three server-approved NASA source IDs, three structured choices, and a
 teacher-only review boundary. The request completed in 23.1 seconds; after
 approval, teacher, student, and display surfaces converged on version 24.
 
-The suite currently has 21 passing tests across guardrails, provider selection,
+The suite currently has 22 passing tests across guardrails, provider selection,
 class-pulse aggregation, and monotonic session recovery. Provider-selection
 tests also verify that unit tests cannot accidentally spend OpenAI credits. The
 production build and lint checks pass.

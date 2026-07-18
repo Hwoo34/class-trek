@@ -1,16 +1,17 @@
 import { demoScenes } from "@/lib/demo-data";
 import { getGenerationProvider } from "@/lib/ai-provider";
 import type { ClassroomSession, SuggestedScene } from "@/lib/types";
+import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
 
-const suggestedSceneValidation = z.object({
+export const suggestedSceneValidation = z.object({
   teacherSummary: z.string(),
   reason: z.string(),
   eyebrow: z.string(),
   title: z.string(),
   narration: z.string(),
   prompt: z.string(),
-  choices: z.tuple([z.string(), z.string(), z.string()]),
+  choices: z.array(z.string()).length(3),
   sourceIds: z.array(z.string()).min(1),
   visual: z.enum(["mars", "ice", "energy"]),
   safetyNote: z.string(),
@@ -97,7 +98,7 @@ export async function generateNextScene(
   });
 
   try {
-    let outputText: string;
+    let parsed: z.infer<typeof suggestedSceneValidation>;
 
     if (generation.provider === "lmstudio") {
       // LM Studio documents JSON-schema enforcement on Chat Completions. Keep
@@ -119,36 +120,46 @@ export async function generateNextScene(
         max_tokens: 1_200,
         temperature: 0.2,
       });
-      outputText = response.choices[0]?.message.content ?? "";
+      parsed = suggestedSceneValidation.parse(
+        JSON.parse(response.choices[0]?.message.content ?? ""),
+      );
     } else {
-      const response = await generation.client.responses.create({
+      const response = await generation.client.responses.parse({
         model: generation.model,
         store: false,
-        max_output_tokens: 900,
+        max_output_tokens: 1_400,
+        reasoning: { effort: "low" },
         input: [
           { role: "system", content: systemContent },
           { role: "user", content: userContent },
         ],
         text: {
-          format: {
-            type: "json_schema",
-            name: "next_classroom_scene",
-            strict: true,
-            schema: sceneSchema,
-          },
+          format: zodTextFormat(
+            suggestedSceneValidation,
+            "next_classroom_scene",
+          ),
         },
       });
-      outputText = response.output_text;
+      if (response.status !== "completed" || !response.output_parsed) {
+        throw new Error(
+          `OpenAI structured response was ${response.status ?? "unavailable"}`,
+        );
+      }
+      parsed = suggestedSceneValidation.parse(response.output_parsed);
     }
 
-    const parsed = suggestedSceneValidation.parse(JSON.parse(outputText));
     const allowedIds = new Set(session.sources.map((source) => source.id));
     if (!parsed.sourceIds.every((sourceId) => allowedIds.has(sourceId))) {
+      return fallbackSuggestion;
+    }
+    const [firstChoice, secondChoice, thirdChoice] = parsed.choices;
+    if (!firstChoice || !secondChoice || !thirdChoice) {
       return fallbackSuggestion;
     }
 
     return {
       ...parsed,
+      choices: [firstChoice, secondChoice, thirdChoice],
       id: `suggestion-${Date.now()}`,
       generatedBy:
         generation.provider === "openai" ? "gpt-5.6" : "lm-studio",
