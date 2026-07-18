@@ -34,10 +34,25 @@ export async function GET(
     const encoder = new TextEncoder();
     let unsubscribe = () => {};
     let heartbeat: ReturnType<typeof setInterval> | undefined;
+    let lifetime: ReturnType<typeof setTimeout> | undefined;
+    let closed = false;
 
     const stream = new ReadableStream({
       start(controller) {
+        const stop = () => {
+          if (closed) return;
+          closed = true;
+          unsubscribe();
+          if (heartbeat) clearInterval(heartbeat);
+          if (lifetime) clearTimeout(lifetime);
+          try {
+            controller.close();
+          } catch {
+            // The runtime or client may close the stream first.
+          }
+        };
         const send = (event: string, data: unknown) => {
+          if (closed) return;
           controller.enqueue(
             encoder.encode(
               `event: ${event}\ndata: ${JSON.stringify(data)}\n\n`,
@@ -48,20 +63,17 @@ export async function GET(
         send("session", session);
         unsubscribe = subscribe(code, (updated) => send("session", updated));
         heartbeat = setInterval(() => send("ping", { at: Date.now() }), 15_000);
+        // End cleanly before the Function limit. EventSource reconnects and
+        // receives a fresh canonical snapshot on the next request.
+        lifetime = setTimeout(stop, 50_000);
 
-        request.signal.addEventListener("abort", () => {
-          unsubscribe();
-          if (heartbeat) clearInterval(heartbeat);
-          try {
-            controller.close();
-          } catch {
-            // The runtime may close the stream first.
-          }
-        });
+        request.signal.addEventListener("abort", stop);
       },
       cancel() {
+        closed = true;
         unsubscribe();
         if (heartbeat) clearInterval(heartbeat);
+        if (lifetime) clearTimeout(lifetime);
       },
     });
 
