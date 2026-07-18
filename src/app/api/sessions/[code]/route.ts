@@ -14,7 +14,7 @@ export async function GET(
   context: RouteContext,
 ): Promise<Response> {
   const { code } = await context.params;
-  const session = getSession(code);
+  const session = await getSession(code);
   if (!session) {
     return NextResponse.json({ error: "Session not found" }, { status: 404 });
   }

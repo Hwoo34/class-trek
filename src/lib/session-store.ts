@@ -36,12 +36,28 @@ const state: StoreState =
 globalThis.__liveLessonStore = state;
 
 const runtimeDirectory = join(process.cwd(), ".runtime");
+const remoteCacheNamespace = "class-trek-sessions";
+const remoteCacheTtlSeconds = 60 * 60 * 24 * 30;
 
 function sessionPath(code: string): string {
   return join(runtimeDirectory, `session-${code.toUpperCase()}.json`);
 }
 
-function readCheckpoint(code: string): ClassroomSession | null {
+async function readCheckpoint(code: string): Promise<ClassroomSession | null> {
+  if (process.env.VERCEL) {
+    try {
+      const { getCache } = await import("@vercel/functions");
+      const cache = getCache({ namespace: remoteCacheNamespace });
+      const checkpoint = await cache.get(`session:${code.toUpperCase()}`);
+      return checkpoint ? (checkpoint as ClassroomSession) : null;
+    } catch (error) {
+      console.warn("Remote session checkpoint read failed", {
+        error: error instanceof Error ? error.message : "unknown-error",
+      });
+      return null;
+    }
+  }
+
   try {
     return JSON.parse(
       readFileSync(sessionPath(code), "utf8"),
@@ -51,7 +67,18 @@ function readCheckpoint(code: string): ClassroomSession | null {
   }
 }
 
-function writeCheckpoint(session: ClassroomSession): void {
+async function writeCheckpoint(session: ClassroomSession): Promise<void> {
+  if (process.env.VERCEL) {
+    const { getCache } = await import("@vercel/functions");
+    const cache = getCache({ namespace: remoteCacheNamespace });
+    await cache.set(`session:${session.code.toUpperCase()}`, session, {
+      ttl: remoteCacheTtlSeconds,
+      tags: [`session:${session.code.toUpperCase()}`],
+      name: "classroom-session",
+    });
+    return;
+  }
+
   mkdirSync(runtimeDirectory, { recursive: true });
   const target = sessionPath(session.code);
   const temporary = `${target}.${process.pid}.tmp`;
@@ -70,9 +97,11 @@ function emitterFor(code: string): EventEmitter {
   return emitter;
 }
 
-export function getSession(code: string): ClassroomSession | null {
+export async function getSession(
+  code: string,
+): Promise<ClassroomSession | null> {
   const normalized = code.toUpperCase();
-  const checkpoint = readCheckpoint(normalized);
+  const checkpoint = await readCheckpoint(normalized);
   const cached = state.sessions.get(normalized);
   if (checkpoint && (!cached || checkpoint.version >= cached.version)) {
     state.sessions.set(normalized, checkpoint);
@@ -82,17 +111,19 @@ export function getSession(code: string): ClassroomSession | null {
   if (normalized === "MARS24") {
     const demo = createDemoSession();
     state.sessions.set(normalized, demo);
-    writeCheckpoint(demo);
+    await writeCheckpoint(demo);
     return demo;
   }
   return null;
 }
 
-function publish(session: ClassroomSession): ClassroomSession {
+async function publish(
+  session: ClassroomSession,
+): Promise<ClassroomSession> {
   session.version += 1;
   session.updatedAt = new Date().toISOString();
   session.pulse = derivePulse(session.participants, session.responses);
-  writeCheckpoint(session);
+  await writeCheckpoint(session);
   emitterFor(session.code).emit("update", structuredClone(session));
   return session;
 }
@@ -125,7 +156,7 @@ export async function applyAction(
   code: string,
   action: SessionAction,
 ): Promise<ClassroomSession> {
-  const session = getSession(code);
+  const session = await getSession(code);
   if (!session) throw new Error("Session not found");
 
   switch (action.type) {
@@ -182,7 +213,7 @@ export async function applyAction(
       return publish(session);
     case "generate_suggestion":
       session.status = "teacher_review";
-      publish(session);
+      await publish(session);
       session.pendingSuggestion = await generateNextScene(
         structuredClone(session),
       );

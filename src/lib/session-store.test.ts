@@ -3,7 +3,7 @@ import { applyAction, getSession } from "@/lib/session-store";
 
 describe("session store versions", () => {
   it("keeps the version monotonic across a demo reset", async () => {
-    const initial = getSession("MARS24");
+    const initial = await getSession("MARS24");
     expect(initial).not.toBeNull();
 
     const changed = await applyAction("MARS24", {

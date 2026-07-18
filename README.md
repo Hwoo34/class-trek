@@ -120,11 +120,12 @@ flowchart LR
     S -->|"approved projection only"| D["Shared display"]
 ```
 
-The prototype stores the sample session in a process-level server singleton and
-an ignored, atomically replaced `.runtime` checkpoint. Every accepted action
-increments `session.version`; clients receive the canonical snapshot over SSE
-and periodically verify it over HTTP. This preserves one zero-setup demo state
-across Next.js route isolation and local server restarts.
+Locally, the prototype stores the sample session in a process-level singleton
+and an ignored, atomically replaced `.runtime` checkpoint. On Vercel, the same
+adapter writes the canonical snapshot to regional Runtime Cache so separate
+Function instances can recover it. Every accepted action increments
+`session.version`; clients receive the snapshot over SSE and periodically
+verify it over HTTP.
 
 AI work happens after student input has passed the safety boundary. GPT-5.6
 receives:
@@ -241,10 +242,11 @@ OpenAI credits. The build and lint checks pass.
 
 ## Prototype boundaries
 
-- The current store uses an in-memory projection plus a single local JSON
-  checkpoint for a zero-setup hackathon demo.
-- Production deployment needs durable storage, authenticated teacher sessions,
-  participant rate limiting, and a shared event bus for horizontal scaling.
+- The deployed demo uses Vercel Runtime Cache as a shared, 30-day checkpoint;
+  it is an ephemeral cache, not a durable student-record database.
+- A school production release still needs durable storage, authenticated
+  teacher sessions, participant rate limiting, and a shared event bus for
+  horizontal scaling.
 - The prototype uses SSE with polling fallback rather than a managed realtime
   service.
 - The keyword guardrail is a deterministic first layer, not a replacement for
