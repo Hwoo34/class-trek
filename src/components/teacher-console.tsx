@@ -60,7 +60,7 @@ export function TeacherConsole({ code }: TeacherConsoleProps) {
       </AppHeader>
       <div className="page">
         <div style={{ marginBottom: 24 }}>
-          <p className="eyebrow">Teacher-controlled live lesson</p>
+          <p className="eyebrow">ClassTrek · Teacher-controlled live lesson</p>
           <h1 className="page-title">{session.title}</h1>
           <p className="lede">{session.learningGoal}</p>
         </div>

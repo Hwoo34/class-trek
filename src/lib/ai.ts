@@ -1,6 +1,20 @@
-import OpenAI from "openai";
 import { demoScenes } from "@/lib/demo-data";
+import { getGenerationProvider } from "@/lib/ai-provider";
 import type { ClassroomSession, SuggestedScene } from "@/lib/types";
+import { z } from "zod";
+
+const suggestedSceneValidation = z.object({
+  teacherSummary: z.string(),
+  reason: z.string(),
+  eyebrow: z.string(),
+  title: z.string(),
+  narration: z.string(),
+  prompt: z.string(),
+  choices: z.tuple([z.string(), z.string(), z.string()]),
+  sourceIds: z.array(z.string()).min(1),
+  visual: z.enum(["mars", "ice", "energy"]),
+  safetyNote: z.string(),
+});
 
 const sceneSchema = {
   type: "object",
@@ -56,8 +70,8 @@ export async function generateNextScene(
     generatedBy: "fallback",
   };
 
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) return fallbackSuggestion;
+  const generation = getGenerationProvider();
+  if (!generation) return fallbackSuggestion;
 
   const safeResponses = session.responses
     .filter((response) => response.safety === "safe")
@@ -72,42 +86,62 @@ export async function generateNextScene(
     title: source.title,
     excerpt: source.excerpt,
   }));
+  const systemContent =
+    "You are a K-12 classroom co-host. Propose, never publish, one next scene for teacher approval. Stay strictly inside the supplied source pack. Use age-appropriate language for grades 6-8. Do not introduce violence, crime, drugs, sexual content, hate, self-harm, personal data, or humiliating comparisons. Do not claim facts without a supplied source id.";
+  const userContent = JSON.stringify({
+    learningGoal: session.learningGoal,
+    currentScene: session.currentScene,
+    classPulse: session.pulse,
+    studentResponses: safeResponses,
+    allowedSources: sourcePack,
+  });
 
   try {
-    const client = new OpenAI({ apiKey });
-    const response = await client.responses.create({
-      model: process.env.OPENAI_MODEL ?? "gpt-5.6-terra",
-      input: [
-        {
-          role: "system",
-          content:
-            "You are a K-12 classroom co-host. Propose, never publish, one next scene for teacher approval. Stay strictly inside the supplied source pack. Use age-appropriate language for grades 6-8. Do not introduce violence, crime, drugs, sexual content, hate, self-harm, personal data, or humiliating comparisons. Do not claim facts without a supplied source id.",
-        },
-        {
-          role: "user",
-          content: JSON.stringify({
-            learningGoal: session.learningGoal,
-            currentScene: session.currentScene,
-            classPulse: session.pulse,
-            studentResponses: safeResponses,
-            allowedSources: sourcePack,
-          }),
-        },
-      ],
-      text: {
-        format: {
-          type: "json_schema",
-          name: "next_classroom_scene",
-          strict: true,
-          schema: sceneSchema,
-        },
-      },
-    });
+    let outputText: string;
 
-    const parsed = JSON.parse(response.output_text) as Omit<
-      SuggestedScene,
-      "id" | "generatedBy"
-    >;
+    if (generation.provider === "lmstudio") {
+      // LM Studio documents JSON-schema enforcement on Chat Completions. Keep
+      // the production GPT-5.6 path on the Responses API below.
+      const response = await generation.client.chat.completions.create({
+        model: generation.model,
+        messages: [
+          { role: "system", content: systemContent },
+          { role: "user", content: userContent },
+        ],
+        response_format: {
+          type: "json_schema",
+          json_schema: {
+            name: "next_classroom_scene",
+            strict: true,
+            schema: sceneSchema,
+          },
+        },
+        max_tokens: 1_200,
+        temperature: 0.2,
+      });
+      outputText = response.choices[0]?.message.content ?? "";
+    } else {
+      const response = await generation.client.responses.create({
+        model: generation.model,
+        store: false,
+        max_output_tokens: 900,
+        input: [
+          { role: "system", content: systemContent },
+          { role: "user", content: userContent },
+        ],
+        text: {
+          format: {
+            type: "json_schema",
+            name: "next_classroom_scene",
+            strict: true,
+            schema: sceneSchema,
+          },
+        },
+      });
+      outputText = response.output_text;
+    }
+
+    const parsed = suggestedSceneValidation.parse(JSON.parse(outputText));
     const allowedIds = new Set(session.sources.map((source) => source.id));
     if (!parsed.sourceIds.every((sourceId) => allowedIds.has(sourceId))) {
       return fallbackSuggestion;
@@ -116,9 +150,14 @@ export async function generateNextScene(
     return {
       ...parsed,
       id: `suggestion-${Date.now()}`,
-      generatedBy: "gpt-5.6",
+      generatedBy:
+        generation.provider === "openai" ? "gpt-5.6" : "lm-studio",
     };
-  } catch {
+  } catch (error) {
+    console.warn("AI scene generation fell back", {
+      provider: generation.provider,
+      error: error instanceof Error ? error.message : "unknown-error",
+    });
     return fallbackSuggestion;
   }
 }

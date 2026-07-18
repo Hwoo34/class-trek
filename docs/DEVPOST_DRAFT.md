@@ -4,9 +4,9 @@
 > explicitly asks entrants not to submit an AI-written description as-is.
 > Rewrite this in the submitter's own voice and replace every bracketed item.
 
-## Working title
+## Project title
 
-Live Lesson Lab
+ClassTrek
 
 ## Tagline
 

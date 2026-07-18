@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  title: "Live Lesson Lab",
+  title: "ClassTrek",
   description:
-    "A source-grounded, teacher-controlled classroom that adapts to student thinking in real time.",
+    "Little steps. One big learning journey. Together.",
 };
 
 export default function RootLayout({

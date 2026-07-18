@@ -8,11 +8,11 @@ export default function HomePage() {
       <AppHeader status="Hackathon build · Education" />
       <div className="page landing">
         <section className="landing-copy">
-          <p className="eyebrow">The lesson listens back</p>
+          <p className="eyebrow">Little steps. Big learning journey. Together.</p>
           <h1 className="display-title">
-            Turn a class
+            Take one small step.
             <br />
-            into a live idea.
+            Let the class lead.
           </h1>
           <p className="lede">
             A source-grounded AI co-host that reads the room, proposes the next

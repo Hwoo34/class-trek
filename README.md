@@ -1,6 +1,9 @@
-# Live Lesson Lab
+# ClassTrek
 
-> Working title. A source-grounded, teacher-controlled classroom that adapts to student thinking in real time.
+> Little steps. One big learning journey. Together.
+
+A source-grounded, teacher-controlled classroom that adapts to student thinking
+in real time.
 
 **OpenAI Build Week track:** Education
 
@@ -68,10 +71,29 @@ Add the following values to `.env.local`:
 |---|---:|---|
 | `OPENAI_API_KEY` | For live AI | Server-only OpenAI project key. Never commit it. |
 | `OPENAI_MODEL` | No | Defaults to `gpt-5.6-terra`. |
+| `AI_PROVIDER` | No | `openai`, `lmstudio`, or `fallback`. Defaults to OpenAI when a key exists. |
+| `MODERATION_PROVIDER` | No | `openai` for the judging demo or `local` for cost-free local testing. |
+| `LM_STUDIO_BASE_URL` | For local AI | Defaults to `http://127.0.0.1:1234/v1`. |
+| `LM_STUDIO_MODEL` | For local AI | Defaults to `google/gemma-4-e4b`. |
 
 If the API is unavailable, the lesson still runs with an explicitly labeled,
 source-grounded fallback proposal. This is a safety and continuity feature,
 not a simulated claim of a successful model response.
+
+### Cost-free local AI testing
+
+ClassTrek supports LM Studio through its OpenAI-compatible Chat Completions
+endpoint with JSON-schema-constrained output.
+Load `google/gemma-4-e4b`, start the local server, and launch the app with:
+
+```bash
+AI_PROVIDER=lmstudio MODERATION_PROVIDER=local pnpm dev
+```
+
+This local adapter is for development and failure testing. The final judging
+demo uses the separate OpenAI adapter with GPT-5.6. Unit tests default to the
+deterministic fallback even when an API key exists, preventing accidental
+credit usage.
 
 ### Quality checks
 
@@ -214,7 +236,8 @@ display contexts. It confirmed:
 - the student and display moved to the same new scene.
 
 Automated tests cover eight guardrail cases and one aggregate/class-pulse case.
-The build and lint checks pass.
+Provider-selection tests also verify that unit tests cannot accidentally spend
+OpenAI credits. The build and lint checks pass.
 
 ## Prototype boundaries
 

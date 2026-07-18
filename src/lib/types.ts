@@ -65,7 +65,7 @@ export interface SuggestedScene extends Scene {
   teacherSummary: string;
   reason: string;
   safetyNote: string;
-  generatedBy: "gpt-5.6" | "fallback";
+  generatedBy: "gpt-5.6" | "lm-studio" | "fallback";
 }
 
 export interface ClassroomSession {

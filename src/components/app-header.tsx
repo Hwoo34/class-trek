@@ -8,7 +8,7 @@ interface AppHeaderProps {
 }
 
 export function AppHeader({
-  label = "Live Lesson Lab",
+  label = "ClassTrek",
   status,
   children,
 }: AppHeaderProps) {

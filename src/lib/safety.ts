@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { shouldUseOpenAIModeration } from "@/lib/ai-provider";
 
 export interface SafetyDecision {
   status: "safe" | "review" | "blocked";
@@ -60,7 +61,9 @@ export function localSafetyCheck(text: string): SafetyDecision {
 
 function getOpenAI(): OpenAI | null {
   const apiKey = process.env.OPENAI_API_KEY;
-  return apiKey ? new OpenAI({ apiKey }) : null;
+  return apiKey && shouldUseOpenAIModeration()
+    ? new OpenAI({ apiKey, maxRetries: 0, timeout: 10_000 })
+    : null;
 }
 
 export async function evaluateSafety(text: string): Promise<SafetyDecision> {
