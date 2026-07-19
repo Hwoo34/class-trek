@@ -8,6 +8,12 @@ export interface JourneyTemplate {
   learningGoal: string;
   hook: string;
   accent: "mars" | "ocean" | "rainforest";
+  creator: string;
+  creatorType: "teacher" | "organization" | "student";
+  reviewLabel: string;
+  rating: number;
+  reviewCount: number;
+  momentum: "Top rated" | "Trending" | "New";
   sources: Source[];
   scenes: Scene[];
 }
@@ -167,6 +173,12 @@ export const journeyTemplates: JourneyTemplate[] = [
       "Use evidence to explain how water, atmosphere, and energy constrain human survival on Mars.",
     hook: "Design a one-night survival plan using trusted science sources.",
     accent: "mars",
+    creator: "ClassTrek Science Studio",
+    creatorType: "teacher",
+    reviewLabel: "Educator reviewed",
+    rating: 4.9,
+    reviewCount: 128,
+    momentum: "Top rated",
     sources: demoSources,
     scenes: demoScenes,
   },
@@ -179,6 +191,12 @@ export const journeyTemplates: JourneyTemplate[] = [
       "Use NOAA evidence to explain how environmental changes can stress a coral reef.",
     hook: "Follow a reef's warning signs before its color disappears.",
     accent: "ocean",
+    creator: "Student Ocean Lab",
+    creatorType: "student",
+    reviewLabel: "Teacher approved",
+    rating: 4.8,
+    reviewCount: 86,
+    momentum: "Trending",
     sources: oceanSources,
     scenes: oceanScenes,
   },
@@ -191,6 +209,12 @@ export const journeyTemplates: JourneyTemplate[] = [
       "Use trusted Earth science evidence to connect plants, atmospheric moisture, clouds, and rainfall.",
     hook: "Solve the mystery of how a forest helps recycle water.",
     accent: "rainforest",
+    creator: "Earth Systems Faculty",
+    creatorType: "organization",
+    reviewLabel: "Institution reviewed",
+    rating: 4.7,
+    reviewCount: 64,
+    momentum: "New",
     sources: rainforestSources,
     scenes: rainforestScenes,
   },

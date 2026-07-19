@@ -1,0 +1,17 @@
+One classroom. Every voice. One Trek.
+But this time, do not watch a slideshow. Watch one class shape what happens next.
+Before class, the teacher opens Trek Exchange. Reviewed Treks can be ranked and shared by the community.
+The teacher can remix any Trek for this class. Student-made Treks stay private until a teacher approves them. Then the class takes the Trek live.
+Now Nova joins from a student device.
+Nova is not racing for points. They react, vote for liquid water, and explain why ice is useful only if the crew also has energy.
+The live class pulse changes as the response arrives. Joined students, choices, questions, and safe reasoning give the teacher the whole room at a glance.
+The teacher can share a safe idea anonymously, while the classroom display updates without exposing the student's identity.
+Then Mission Control asks ClassTrek to read the room.
+GPT-5.6 combines de-identified student reasoning with sources selected for this Trek. It proposes a structured next scene and cites only server-validated source identifiers.
+The proposal cannot publish itself. The teacher reads it, checks the evidence, and makes the decision.
+Approve and publish.
+One click advances the canonical lesson version. The teacher screen, Nova's device, and the shared display all move to the same next question.
+That is the ClassTrek loop: students contribute evidence, AI proposes a branch, software enforces safety and grounding, and the teacher remains in control.
+Classroom guardrails check every response. Unsafe text never reaches the public display.
+Codex helped turn this idea into a production-tested system: authoritative real-time state, recovery, structured GPT output, safety tests, and real multi-browser verification.
+Little steps. One big learning journey. Together.

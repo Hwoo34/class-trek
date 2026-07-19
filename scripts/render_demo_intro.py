@@ -172,7 +172,7 @@ def add_logo(frame, time):
         centered_text(layer, "ClassTrek", title_font, title_y, (255, 255, 255), 255 * progress)
         centered_text(
             layer,
-            "A LIVE LEARNING JOURNEY",
+            "A LIVE LEARNING TREK",
             small_font,
             title_y + 120,
             (74, 241, 220),
@@ -208,7 +208,7 @@ def add_opening_words(frame, time):
 
     centered_text(layer, "ONE CLASSROOM.", font, 248, (255, 255, 255), 255 * alpha_one)
     centered_text(layer, "EVERY VOICE.", font, 326, (74, 241, 220), 255 * alpha_two)
-    centered_text(layer, "ONE JOURNEY.", font, 404, (255, 174, 110), 255 * alpha_three)
+    centered_text(layer, "ONE TREK.", font, 404, (255, 174, 110), 255 * alpha_three)
     centered_text(
         layer,
         "Little steps become a shared direction.",

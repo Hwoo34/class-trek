@@ -117,6 +117,11 @@ export type SessionAction =
   | { type: "dismiss_suggestion" }
   | { type: "approve_response"; responseId: string }
   | { type: "publish_response"; responseId: string }
-  | { type: "select_journey"; journeyId: string }
+  | {
+      type: "select_journey";
+      journeyId: string;
+      customTitle?: string;
+      customLearningGoal?: string;
+    }
   | { type: "resume_journey"; historyId: string }
   | { type: "reset_demo" };

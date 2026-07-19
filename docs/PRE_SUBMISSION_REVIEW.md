@@ -1,10 +1,10 @@
 # Pre-submission review
 
-Review date: 2026-07-18 KST
+Review date: 2026-07-19 KST
 
 Track: Education
 
-Status: **GO FOR YOUTUBE UPLOAD — working production build and polished V5
+Status: **GO FOR YOUTUBE UPLOAD — working production build and polished V7
 showcase video are ready; external submission items remain**
 
 ## Executive result
@@ -28,13 +28,13 @@ blockers.
 | Potential Impact | Specific teacher problem, whole-class participation, measurable response/pulse/moderation evidence; no unsupported efficacy claims | 7.5/10 |
 | Quality of the Idea | Clear live-branch differentiation from fixed interactive slides and individual tutors | 8/10 |
 
-Internal score: **32.5/40**. The remaining upside is primarily judge-facing:
-capture the verified production flow cleanly, show a live `gpt-5.6` proposal,
-and make the impact case concrete in the final video and description.
+Internal score: **34/40**. The final video now proves the live class loop,
+teacher authority, student participation, `gpt-5.6` proposal, safety boundary,
+and Trek Exchange impact case in one coherent story.
 
 ## Verified
 
-- [x] `pnpm test`: 8 files, 24 tests passed.
+- [x] `npm test`: 8 files, 26 tests passed.
 - [x] `pnpm lint`: passed.
 - [x] `pnpm build`: passed.
 - [x] Production deployment: <https://class-trek.vercel.app>.
@@ -53,7 +53,7 @@ and make the impact case concrete in the final video and description.
 - [x] Repeated authentication attempts return `429`; model generation is
       limited per client and per day.
 - [x] A paid local smoke test produced a structured proposal labeled
-      `gpt-5.6` with server-validated source IDs from the current journey.
+      `gpt-5.6` with server-validated source IDs from the current Trek.
 - [x] Production GPT-5.6 returned a structured, source-valid proposal in 23.1
       seconds and remained private until teacher approval.
 - [x] Teacher, student, and display surfaces converged on the approved GPT-5.6
@@ -70,19 +70,23 @@ and make the impact case concrete in the final video and description.
    - No public YouTube URL exists.
    - A 1:56.60 English TTS story-driven video with burned-in English captions,
      an original animated intro, three synchronized browser contexts,
-     student-choice and live-pulse punch-ins, and smooth transitions is ready
-     at `artifacts/ClassTrek-demo-v5-participation.mp4`.
+     student-choice and live-class-pulse punch-ins, and smooth transitions is ready
+     at `artifacts/ClassTrek-demo-v7-final.mp4`, now with corrected English
+     narration and captions, Trek Exchange, a clean ending transition, and
+     explicit teacher/student/class-display borders and labels.
    - Required action: upload as Public, verify it while signed out, and add the
      URL to Devpost.
 
-2. **Devpost identity fields**
-   - Submitter type, country of residence, and `/feedback` Session ID are
-     user-owned and still missing.
+2. **Devpost identity and testing fields**
+   - Submitter type and country of residence still require user confirmation.
+   - Add the production teacher access code only to private field `27949`.
+   - `/feedback` Session ID:
+     `019f743b-f708-7352-a6a8-4a1832dcf7e2`.
    - Devpost project `1335631` is published as
      <https://devpost.com/software/classtrek>, but the OpenAI Build Week entry
      still reports `submitted_at: null`.
 
-## High-priority hardening before recording
+## Deferred post-hackathon hardening
 
 - [x] Add an authenticated teacher authority boundary.
 - [ ] Add action IDs/idempotency for duplicate student submissions.
@@ -102,7 +106,7 @@ and make the impact case concrete in the final video and description.
 | Education category | Ready |
 | Repository URL | Ready: <https://github.com/Hwoo34/class-trek> |
 | Judge demo URL/instructions | URL ready; add the teacher access code only to the private judge instructions |
-| `/feedback` Session ID | Missing |
+| `/feedback` Session ID | Ready: `019f743b-f708-7352-a6a8-4a1832dcf7e2` |
 | Public YouTube URL | Missing |
 
 Do not call the Devpost submit action until all blockers are cleared and the

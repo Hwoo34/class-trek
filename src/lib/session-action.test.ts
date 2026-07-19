@@ -38,4 +38,26 @@ describe("classroom action validation", () => {
     expect(teacherActionTypes.has("select_journey")).toBe(true);
     expect(teacherActionTypes.has("resume_journey")).toBe(true);
   });
+
+  it("accepts bounded teacher journey remixes", () => {
+    expect(
+      parseSessionAction({
+        type: "select_journey",
+        journeyId: "ocean",
+        customTitle: "Our Neighborhood Reef",
+        customLearningGoal:
+          "Use evidence to explain how temperature changes affect coral.",
+      }),
+    ).toMatchObject({
+      type: "select_journey",
+      customTitle: "Our Neighborhood Reef",
+    });
+    expect(() =>
+      parseSessionAction({
+        type: "select_journey",
+        journeyId: "ocean",
+        customTitle: "x".repeat(61),
+      }),
+    ).toThrow();
+  });
 });

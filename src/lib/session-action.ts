@@ -42,7 +42,12 @@ const actionSchema = z.discriminatedUnion("type", [
   z.object({ type: z.literal("dismiss_suggestion") }),
   z.object({ type: z.literal("approve_response"), responseId: shortText }),
   z.object({ type: z.literal("publish_response"), responseId: shortText }),
-  z.object({ type: z.literal("select_journey"), journeyId: shortText }),
+  z.object({
+    type: z.literal("select_journey"),
+    journeyId: shortText,
+    customTitle: z.string().trim().min(1).max(60).optional(),
+    customLearningGoal: z.string().trim().min(1).max(240).optional(),
+  }),
   z.object({ type: z.literal("resume_journey"), historyId: shortText }),
   z.object({ type: z.literal("reset_demo") }),
 ]);
