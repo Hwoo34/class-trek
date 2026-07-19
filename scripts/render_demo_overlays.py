@@ -174,8 +174,17 @@ def main():
         "v4": SECTION_LABELS_V4,
     }[args.version]
     concat_lines = []
+    cursor = 0.0
 
     for cue in cues:
+        if cue["start"] > cursor:
+            gap_filename = f"gap-{cue['index']:02d}.png"
+            Image.new("RGBA", (1280, 720), (0, 0, 0, 0)).save(
+                args.output / gap_filename
+            )
+            concat_lines.append(f"file '{gap_filename}'")
+            concat_lines.append(f"duration {cue['start'] - cursor:.6f}")
+
         filename = f"{cue['index']:02d}.png"
         render_overlay(
             cue,
@@ -187,6 +196,7 @@ def main():
         ).save(args.output / filename)
         concat_lines.append(f"file '{filename}'")
         concat_lines.append(f"duration {cue['end'] - cue['start']:.6f}")
+        cursor = cue["end"]
 
     concat_lines.append(f"file '{cues[-1]['index']:02d}.png'")
     (args.output / "concat.txt").write_text("\n".join(concat_lines) + "\n")

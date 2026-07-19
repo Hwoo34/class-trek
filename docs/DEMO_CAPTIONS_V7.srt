@@ -1,0 +1,81 @@
+1
+00:00:00,000 --> 00:00:02,800
+One classroom. Every voice. One Trek.
+
+2
+00:00:02,800 --> 00:00:09,800
+Do not watch a slideshow.
+Watch one class shape what happens next.
+
+3
+00:00:09,800 --> 00:00:17,200
+Open Trek Exchange.
+Discover reviewed Treks, ranked and shared by the community.
+
+4
+00:00:17,200 --> 00:00:26,233
+Remix any Trek for your class.
+Student-made Treks require teacher approval.
+
+5
+00:00:27,000 --> 00:00:29,800
+Now Nova joins from a student device.
+
+6
+00:00:29,800 --> 00:00:41,000
+Nova reacts, votes for liquid water, and explains why
+ice is useful only if the crew also has energy.
+
+7
+00:00:41,000 --> 00:00:50,500
+The live class pulse changes as the response arrives.
+The teacher sees the whole room at a glance.
+
+8
+00:00:50,500 --> 00:00:57,800
+The teacher can share a safe idea anonymously,
+without exposing the student's identity.
+
+9
+00:00:57,800 --> 00:01:01,500
+Mission Control asks ClassTrek
+to read the room.
+
+10
+00:01:01,500 --> 00:01:10,800
+GPT-5.6 combines de-identified reasoning
+with sources selected for this Trek.
+
+11
+00:01:10,800 --> 00:01:17,300
+The proposal cannot publish itself.
+The teacher checks the evidence and decides.
+
+12
+00:01:17,300 --> 00:01:18,600
+Approve and publish.
+
+13
+00:01:18,600 --> 00:01:27,800
+One click advances the canonical lesson version.
+Every connected screen moves to the same next question.
+
+14
+00:01:27,800 --> 00:01:37,200
+Students contribute evidence. AI proposes a branch.
+Software enforces safety. The teacher remains in control.
+
+15
+00:01:37,200 --> 00:01:43,000
+Every response is checked by classroom guardrails.
+Unsafe text never reaches the public display.
+
+16
+00:01:43,000 --> 00:01:52,750
+Codex accelerated real-time state, recovery, structured GPT output,
+safety tests, and real multi-browser verification.
+
+17
+00:01:52,750 --> 00:01:56,543
+Little steps. One big learning journey.
+Together.

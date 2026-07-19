@@ -44,4 +44,19 @@ describe("session store versions", () => {
     expect(resumed.currentScene.id).toBe("scene-arrival");
     expect(resumed.version).toBeGreaterThan(reef.version);
   });
+
+  it("lets a teacher remix a reviewed journey before launch", async () => {
+    await applyAction("MARS24", { type: "reset_demo" });
+    const remixed = await applyAction("MARS24", {
+      type: "select_journey",
+      journeyId: "ocean",
+      customTitle: "Our Neighborhood Reef",
+      customLearningGoal:
+        "Use evidence to explain how warmer water can change a reef.",
+    });
+
+    expect(remixed.title).toBe("Our Neighborhood Reef");
+    expect(remixed.learningGoal).toContain("warmer water");
+    expect(remixed.sources.length).toBeGreaterThan(0);
+  });
 });

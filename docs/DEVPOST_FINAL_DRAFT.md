@@ -25,13 +25,19 @@ ClassTrek runs one synchronized lesson across three real surfaces:
 - the classroom display shows only approved, privacy-preserving information.
 
 GPT-5.6 combines safe student reasoning, the aggregate pulse, and the
-teacher-selected sources for the current journey into a structured proposal
+teacher-selected sources for the current Trek into a structured proposal
 for the next explanation and question. The server validates the source IDs,
 and the proposal stays private until the teacher approves it. One approval
 advances the canonical lesson version for every connected screen.
 
-The demo journey desk includes Mars survival, coral reef resilience, and
-rainforest water cycles. The content provider can change; the product loop
+The demo also includes a working Trek Exchange. Teachers can discover reviewed
+teacher, organization, and student-made Treks, filter by community signals,
+remix the title and learning goal, and launch the adapted Trek while its
+approved sources remain attached. Student-made Treks stay private until a
+teacher or institution reviews them.
+
+The Trek catalog includes Mars survival, coral reef resilience, and rainforest
+water cycles. The content provider can change; the product loop
 stays the same: students shape the path, evidence constrains the proposal, and
 the teacher decides.
 
@@ -88,7 +94,8 @@ OpenAI.
 - Unsafe student content blocked before analysis or public display.
 - Signed HttpOnly teacher sessions and bounded authentication/model requests.
 - Realtime recovery across refreshes and serverless stream rotation.
-- 22 automated tests plus lint, production build, browser, and runtime-log
+- A functional Trek Exchange remix path with teacher-review boundaries.
+- 26 automated tests plus lint, production build, browser, and runtime-log
   verification.
 
 ## What we learned
@@ -101,9 +108,12 @@ move, software enforces safety and grounding, and the teacher decides.
 
 The next step is a small educator pilot measuring participation,
 time-to-intervention, and how often teachers approve, edit, or reject proposed
-branches. A school release would add durable event storage, individual teacher
-accounts, richer proposal editing, more source-locked lesson packs, and an
-educator-reviewed age-banded safety evaluation set.
+branches. Trek Exchange would grow from sample catalog data into authenticated
+publishing, real ratings and reviews, versioned remix attribution, and
+institution moderation. Students could research and propose new Treks, but a
+teacher or institution would remain the publishing authority. A school release
+would also add durable event storage, individual teacher accounts, richer
+proposal editing, and an educator-reviewed age-banded safety evaluation set.
 
 ## Links
 

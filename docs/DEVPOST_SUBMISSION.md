@@ -28,12 +28,12 @@ These items require the submitter's identity, account access, or an external pub
 | Item | Required value | Status |
 |---|---|---|
 | **Code repository URL** | <https://github.com/Hwoo34/class-trek> (public, MIT) | **READY** |
-| **Public YouTube URL** | Publicly visible video, strictly under 3:00, with audio | **MISSING — USER ONLY** |
-| **`/feedback` Codex Session ID** | Session ID from the project thread where the majority of core functionality was built | **MISSING — USER ONLY** |
+| **Public YouTube URL** | <https://youtu.be/Tn5JbPUIx44>, public, 1:56.60, with audio | **READY** |
+| **`/feedback` Codex Session ID** | `019f743b-f708-7352-a6a8-4a1832dcf7e2` | **READY** |
 | **Country of residence** | Must be selected in the Devpost form and satisfy the Official Rules | **MISSING — USER ONLY** |
 | **Submitter type** | Exactly one of `Individual`, `Team of Individuals`, or `Organization` | **MISSING — USER ONLY** |
 
-Do not mark the submission ready until the four remaining user-owned values are
+Do not mark the submission ready until the two remaining user-owned values are
 filled in and independently verified.
 
 ## Exact required submission fields and deliverables
@@ -62,14 +62,15 @@ The Devpost Hackathons app returned the following live form fields on 2026-07-18
 - [x] A **working project** built with Codex using GPT-5.6, verified in the
       protected production deployment.
 - [x] Exactly one category selected: **Education**.
-- [ ] A project description explaining the features and functionality.
-- [ ] A **public YouTube demo video shorter than three minutes**.
-- [ ] Demo audio clearly covers:
-  - [ ] what was built;
-  - [ ] how Codex was used; and
-  - [ ] how GPT-5.6 was used.
-- [ ] The video shows the project actually working.
-- [ ] The video contains no unlicensed music, copyrighted material, or third-party trademarks without permission.
+- [x] A project description explaining the features and functionality.
+- [x] A **public YouTube demo video shorter than three minutes**.
+- [x] Demo audio clearly covers:
+  - [x] what was built;
+  - [x] how Codex was used; and
+  - [x] how GPT-5.6 was used.
+- [x] The video shows the project actually working.
+- [x] The video contains no unlicensed music, copyrighted material, or
+      third-party trademarks without permission.
 - [x] A code repository URL suitable for judging and testing.
 - [x] A README with setup instructions, sample data where needed, and clear run/test guidance.
 - [ ] The README explains:
@@ -221,12 +222,12 @@ and GPT-5.6 were used.
 Video final checks:
 
 - [x] Exported duration is `00:01:56.60`, shorter than `00:03:00`.
-- [ ] YouTube visibility is **Public**, not Private or Unlisted.
-- [ ] Audio explicitly says “Codex” and “GPT-5.6” and explains distinct contributions.
-- [ ] On-screen text remains readable at normal YouTube playback size.
-- [ ] No real student data, API keys, `.env` files, private URLs, credentials, moderation prompts, or internal dashboards are visible.
-- [ ] No unsupported product claim is narrated.
-- [ ] The submitted build reproduces the video.
+- [x] YouTube visibility is **Public**, not Private or Unlisted.
+- [x] Audio explicitly says “Codex” and “GPT-5.6” and explains distinct contributions.
+- [x] On-screen text remains readable at normal YouTube playback size.
+- [x] No real student data, API keys, `.env` files, private URLs, credentials, moderation prompts, or internal dashboards are visible.
+- [x] No unsupported product claim is narrated.
+- [x] The submitted build reproduces the video.
 
 ## README checklist
 

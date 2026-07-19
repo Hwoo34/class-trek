@@ -291,6 +291,10 @@ export async function applyAction(
       ].slice(0, 4);
       const next = createDemoSession(journey.id, history);
       next.version = session.version;
+      if (action.customTitle) next.title = action.customTitle;
+      if (action.customLearningGoal) {
+        next.learningGoal = action.customLearningGoal;
+      }
       next.participants = session.participants.map((participant) => ({
         ...participant,
         reaction: null,
