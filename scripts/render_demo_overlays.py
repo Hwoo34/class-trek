@@ -1,3 +1,4 @@
+import argparse
 from pathlib import Path
 import re
 
@@ -5,13 +6,11 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SRT_PATH = ROOT / "artifacts" / "ClassTrek-demo-v2.srt"
-OUTPUT_DIR = ROOT / "artifacts" / "demo-overlays"
 
 REGULAR_FONT = "/System/Library/Fonts/Supplemental/Arial.ttf"
 BOLD_FONT = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
 
-SECTION_LABELS = {
+SECTION_LABELS_V2 = {
     1: "THE PROBLEM",
     2: "TEACHER MISSION CONTROL",
     4: "LIVE STUDENT PARTICIPATION",
@@ -27,6 +26,28 @@ SECTION_LABELS = {
     20: "EDUCATION TRACK",
 }
 
+SECTION_LABELS_V3 = {
+    4: "THE PROBLEM",
+    5: "MISSION MARS",
+    6: "TEACHER MISSION CONTROL",
+    7: "LIVE STUDENT PARTICIPATION",
+    8: "PRIVACY-PRESERVING CLASS PULSE",
+    9: "ONE AUTHORITATIVE CLASSROOM STATE",
+    10: "REALTIME SYNC AND RECOVERY",
+    11: "SAFETY BEFORE ANALYSIS",
+    12: "HARMFUL CONTENT NEVER REACHES THE CLASS",
+    13: "GPT-5.6 READS THE ROOM",
+    14: "GROUNDED STRUCTURED GENERATION",
+    15: "SERVER-VALIDATED SOURCES",
+    16: "TEACHER APPROVAL REQUIRED",
+    17: "EVERY SCREEN MOVES TOGETHER",
+    18: "REAL MULTI-USER RECOVERY",
+    19: "BUILT WITH CODEX",
+    20: "PRODUCTION-TESTED WITH CODEX",
+    21: "HUMAN DECISIONS STAY HUMAN",
+    22: "EDUCATION TRACK",
+}
+
 
 def parse_timestamp(value: str) -> float:
     hours, minutes, rest = value.split(":")
@@ -39,8 +60,8 @@ def parse_timestamp(value: str) -> float:
     )
 
 
-def parse_srt():
-    blocks = re.split(r"\n\s*\n", SRT_PATH.read_text().strip())
+def parse_srt(srt_path):
+    blocks = re.split(r"\n\s*\n", srt_path.read_text().strip())
     cues = []
     for block in blocks:
         lines = block.splitlines()
@@ -56,7 +77,7 @@ def parse_srt():
     return cues
 
 
-def render_overlay(cue):
+def render_overlay(cue, section_labels, hide_caption=False):
     canvas = Image.new("RGBA", (1280, 720), (0, 0, 0, 0))
     draw = ImageDraw.Draw(canvas)
 
@@ -64,26 +85,31 @@ def render_overlay(cue):
     caption_bold = ImageFont.truetype(BOLD_FONT, 27)
     section_font = ImageFont.truetype(BOLD_FONT, 18)
 
-    caption_lines = cue["text"].splitlines()
-    caption_height = 38 * len(caption_lines) + 30
-    caption_top = 720 - caption_height - 22
-    draw.rounded_rectangle(
-        (90, caption_top, 1190, 698),
-        radius=18,
-        fill=(8, 25, 40, 224),
-        outline=(49, 227, 206, 190),
-        width=2,
-    )
+    if not hide_caption:
+        caption_lines = cue["text"].splitlines()
+        caption_height = 38 * len(caption_lines) + 30
+        caption_top = 720 - caption_height - 22
+        draw.rounded_rectangle(
+            (90, caption_top, 1190, 698),
+            radius=18,
+            fill=(8, 25, 40, 224),
+            outline=(49, 227, 206, 190),
+            width=2,
+        )
 
-    y = caption_top + 15
-    for line in caption_lines:
-        font = caption_bold if "GPT-5.6" in line or "Codex" in line else caption_font
-        bounds = draw.textbbox((0, 0), line, font=font)
-        x = (1280 - (bounds[2] - bounds[0])) / 2
-        draw.text((x, y), line, font=font, fill=(255, 255, 255, 255))
-        y += 38
+        y = caption_top + 15
+        for line in caption_lines:
+            font = (
+                caption_bold
+                if "GPT-5.6" in line or "Codex" in line
+                else caption_font
+            )
+            bounds = draw.textbbox((0, 0), line, font=font)
+            x = (1280 - (bounds[2] - bounds[0])) / 2
+            draw.text((x, y), line, font=font, fill=(255, 255, 255, 255))
+            y += 38
 
-    label = SECTION_LABELS.get(cue["index"])
+    label = section_labels.get(cue["index"])
     if label:
         bounds = draw.textbbox((0, 0), label, font=section_font)
         width = bounds[2] - bounds[0] + 58
@@ -103,18 +129,39 @@ def render_overlay(cue):
 
 
 def main():
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    cues = parse_srt()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--srt",
+        type=Path,
+        default=ROOT / "artifacts" / "ClassTrek-demo-v2.srt",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=ROOT / "artifacts" / "demo-overlays",
+    )
+    parser.add_argument("--version", choices=("v2", "v3"), default="v2")
+    args = parser.parse_args()
+
+    args.output.mkdir(parents=True, exist_ok=True)
+    cues = parse_srt(args.srt)
+    section_labels = (
+        SECTION_LABELS_V3 if args.version == "v3" else SECTION_LABELS_V2
+    )
     concat_lines = []
 
     for cue in cues:
         filename = f"{cue['index']:02d}.png"
-        render_overlay(cue).save(OUTPUT_DIR / filename)
+        render_overlay(
+            cue,
+            section_labels,
+            hide_caption=args.version == "v3" and cue["index"] <= 3,
+        ).save(args.output / filename)
         concat_lines.append(f"file '{filename}'")
         concat_lines.append(f"duration {cue['end'] - cue['start']:.6f}")
 
     concat_lines.append(f"file '{cues[-1]['index']:02d}.png'")
-    (OUTPUT_DIR / "concat.txt").write_text("\n".join(concat_lines) + "\n")
+    (args.output / "concat.txt").write_text("\n".join(concat_lines) + "\n")
 
 
 if __name__ == "__main__":

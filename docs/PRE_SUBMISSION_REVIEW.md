@@ -4,8 +4,8 @@ Review date: 2026-07-18 KST
 
 Track: Education
 
-Status: **GO FOR YOUTUBE UPLOAD — working production build and captioned local
-video are ready; external submission items remain**
+Status: **GO FOR YOUTUBE UPLOAD — working production build and polished V3
+showcase video are ready; external submission items remain**
 
 ## Executive result
 
@@ -15,8 +15,9 @@ moderated; a class pulse is derived; an AI/fallback proposal waits for teacher
 approval; and all surfaces receive the approved version.
 
 The code, tests, safety contract, README, public repository, protected deployed
-demo, live production GPT-5.6 path, and captioned 2:04 video are ready. The
-public YouTube URL and submitter-owned Devpost fields remain blockers.
+demo, live production GPT-5.6 path, and captioned 2:15 product-showcase video
+are ready. The public YouTube URL and submitter-owned Devpost fields remain
+blockers.
 
 ## Judge-criteria review
 
@@ -67,8 +68,9 @@ and make the impact case concrete in the final video and description.
 
 1. **Demo video**
    - No public YouTube URL exists.
-   - A 2:04.4 English TTS video with burned-in English captions is ready at
-     `artifacts/ClassTrek-demo-v2-captioned.mp4`.
+   - A 2:15.03 English TTS product-showcase video with burned-in English
+     captions, an original animated intro, real product recordings, and smooth
+     transitions is ready at `artifacts/ClassTrek-demo-v3-final.mp4`.
    - Required action: upload as Public, verify it while signed out, and add the
      URL to Devpost.
 

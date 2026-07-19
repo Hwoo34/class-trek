@@ -198,7 +198,10 @@ Avoid positioning the project as an AI slide generator, quiz generator, leaderbo
 
 ## Under-three-minute demo storyboard
 
-**Target final runtime: 2:45–2:50. Hard stop before 3:00.** Record a clean run; remove typing, loading, setup, and silence. The voiceover may be human or AI-assisted, but must clearly explain what was built and how both Codex and GPT-5.6 were used.
+**Final runtime: 2:15.03. Hard stop before 3:00.** The V3 edit removes typing,
+loading, setup, and silence; opens with a rapid product promise; and uses
+English narration and burned-in captions to explain what was built and how
+both Codex and GPT-5.6 were used.
 
 | Time | Screen/action | Narration purpose | Criteria evidence |
 |---|---|---|---|
@@ -216,7 +219,7 @@ Avoid positioning the project as an AI slide generator, quiz generator, leaderbo
 
 Video final checks:
 
-- [ ] Exported duration is `00:02:59` or shorter; target `00:02:50`.
+- [x] Exported duration is `00:02:15.03`, shorter than `00:03:00`.
 - [ ] YouTube visibility is **Public**, not Private or Unlisted.
 - [ ] Audio explicitly says “Codex” and “GPT-5.6” and explains distinct contributions.
 - [ ] On-screen text remains readable at normal YouTube playback size.

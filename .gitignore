@@ -17,6 +17,8 @@
 # logs and editor files
 *.log
 .DS_Store
+__pycache__/
+*.py[cod]
 
 # hosting
 .vercel

@@ -1,11 +1,15 @@
 # ClassTrek demo video runbook
 
-> This is the original recording runbook. The edited v2 candidate is
-> `artifacts/ClassTrek-demo-v2-captioned.mp4` at **2:04.4** with English
-> narration and burned-in English captions. Its final narration is in
-> `docs/DEMO_VOICEOVER_V2.txt`.
+> The final product-showcase candidate is
+> `artifacts/ClassTrek-demo-v3-final.mp4` at **2:15.03** with English
+> narration, burned-in English captions, an animated original intro, and
+> smooth transitions between real product recordings. Its final narration is
+> in `docs/DEMO_VOICEOVER_V3.txt`.
 
-The submitted YouTube video must remain under 3:00 and include audio.
+The submitted YouTube video must remain under 3:00 and include audio. The V3
+candidate opens with ClassTrek's product promise and the keywords `Live class
+pulse`, `Source-grounded AI`, and `Teacher in control`, then proves each claim
+in the working product.
 
 ## Recording setup
 
@@ -56,11 +60,16 @@ The submitted YouTube video must remain under 3:00 and include audio.
 
 ## Final media checks
 
-- [ ] Duration is less than `00:03:00`.
-- [ ] Voiceover explicitly explains the product, Codex, and GPT-5.6.
-- [ ] The GPT-5.6 badge, teacher approval, blocked item, and synchronized scene
+- [x] Duration is `00:02:15.03`, less than `00:03:00`.
+- [x] Voiceover explicitly explains the product, Codex, and GPT-5.6.
+- [x] The GPT-5.6 badge, teacher approval, blocked item, and synchronized scene
       change are readable.
-- [ ] No API key, `.env` file, private account page, or explicit unsafe text is
+- [x] No API key, `.env` file, private account page, or explicit unsafe text is
       visible after submission.
-- [ ] The deployed build reproduces every claim in the narration.
+- [x] The deployed build reproduces every claim in the narration.
+- [x] Export is 1280x720 H.264/AAC at 30fps with BT.709 limited-range
+      `yuv420p`.
+- [x] Captions are burned in; the opening CG carries its own matching title
+      text.
+- [x] The ambient sound bed is original and contains no copyrighted music.
 - [ ] YouTube visibility is **Public**.

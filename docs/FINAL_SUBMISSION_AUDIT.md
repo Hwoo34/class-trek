@@ -32,7 +32,7 @@ published portfolio page is not yet a completed hackathon submission.
 | Codex used meaningfully | README collaboration history, dated commits, tests, production fixes | Ready |
 | GPT-5.6 used meaningfully | Production structured next-scene generation; actual `gpt-5.6` proposal re-verified after parser hardening | Ready |
 | Project description | Final draft in `docs/DEVPOST_FINAL_DRAFT.md` | Human review required |
-| Demo video | 2:04 English TTS, burned-in English captions, working product, Codex and GPT-5.6 coverage | Local file ready |
+| Demo video | 2:15 product-showcase edit, English TTS, burned-in English captions, working product, Codex and GPT-5.6 coverage | Local file ready |
 | YouTube visibility | Rules and FAQ say Public; use Public even though the reminder email says Unlisted is acceptable | Missing |
 | Repository | Public MIT repository at <https://github.com/Hwoo34/class-trek> | Ready |
 | README | Setup, test path, sample class, architecture, safety, Codex, GPT-5.6, limitations, license | Ready |
@@ -58,17 +58,21 @@ while it remains public. If it becomes private, share it with both
 ## Video compliance
 
 Final local candidate:
-`artifacts/ClassTrek-demo-v2-captioned.mp4`
+`artifacts/ClassTrek-demo-v3-final.mp4`
 
-- Runtime: 2:04.4, below the three-minute limit.
-- Resolution: 1280x720, H.264 video and AAC audio.
+- Runtime: 2:15.03, below the three-minute limit.
+- Resolution: 1280x720, 30fps, H.264 video and AAC audio, standard BT.709
+  limited-range `yuv420p`.
 - English AI-assisted narration is permitted by the FAQ.
 - Burned-in English captions are included.
+- An original animated ClassTrek intro quickly establishes the product name,
+  tagline, and the three promises that the working demo then proves.
 - The sequence demonstrates the problem, a complete working flow, safety,
   actual GPT-5.6 output, teacher approval, synchronized clients, reconnect
   behavior, concrete Codex contributions, and human decisions.
 - No API key, access code, explicit blocked text, private dashboard, or
-  copyrighted music is shown.
+  copyrighted music is shown; the quiet ambient bed was generated locally for
+  this video.
 
 Before submitting:
 
