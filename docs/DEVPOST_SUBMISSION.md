@@ -199,7 +199,7 @@ Avoid positioning the project as an AI slide generator, quiz generator, leaderbo
 
 ## Under-three-minute demo storyboard
 
-**Final runtime: 1:56.57. Hard stop before 3:00.** The V4 edit opens with a
+**Final runtime: 1:56.60. Hard stop before 3:00.** The V5 edit opens with a
 rapid product promise and follows one causal classroom story. It uses English
 narration and burned-in captions to explain what was built and how both Codex
 and GPT-5.6 were used.
@@ -208,19 +208,19 @@ and GPT-5.6 were used.
 |---|---|---|---|
 | 0:00–0:13 | Animated ClassTrek promise and product keywords | Identify the product and its whole-class differentiation immediately. | Impact, Idea |
 | 0:13–0:26 | Teacher previews recommended `Reef Rescue`, then resumes the class's earlier `Mission Mars` journey | Show topic choice, source-grounded recommendation, and continuity across lessons. | Design, Idea |
-| 0:26–0:46 | Nova joins on a separate student device, reacts, votes, and explains the connection between water and energy | Establish real multi-user participation and reasoning, not a static mockup. | Technology, Design |
-| 0:46–1:00 | Nova's response changes the teacher pulse and is shared anonymously to the room | Show synchronized state and privacy-preserving participation. | Technology, Impact |
-| 1:00–1:10 | Teacher asks ClassTrek to read the room; actual `gpt-5.6` proposal and approved NASA source IDs appear | Prove meaningful, structured, source-grounded GPT-5.6 use. | Technology, Idea |
+| 0:26–0:46 | Nova joins on a separate student device, reacts, votes, and explains the connection between water and energy; the selected controls receive a 1.98-second punch-in | Establish real multi-user participation and reasoning, not a static mockup. | Technology, Design |
+| 0:46–1:00 | A 1.78-second live-pulse punch-in makes the updated joined/answered totals legible before Nova's response is shared anonymously | Show synchronized state and privacy-preserving participation. | Technology, Impact |
+| 1:00–1:10 | Teacher asks ClassTrek to read the room; an actual `gpt-5.6` proposal and server-validated source IDs appear | Prove meaningful, structured, source-grounded GPT-5.6 use without tying the product to one publisher. | Technology, Idea |
 | 1:10–1:18 | Teacher reviews the evidence and clicks `Approve & publish` | Prove AI cannot autonomously advance the class. | Design, Technology |
 | 1:18–1:28 | Teacher, student, and shared display move to the same next scene | Show the authoritative lesson version across connected clients. | Technology, Design |
 | 1:28–1:37 | Recovery evidence and ClassTrek loop summary | Demonstrate a working system beyond the happy-path animation. | Technology |
 | 1:37–1:45 | Safety queue and blocked-content evidence | Demonstrate educational guardrails without broadcasting unsafe text. | Technology, Design |
 | 1:45–1:53 | Repository/Codex collaboration montage | Name concrete Codex contributions and retained human decisions. | Technology, Idea |
-| 1:53–1:56.57 | End card and tagline | Reinforce the product promise. | Impact, Idea |
+| 1:53–1:56.60 | End card and tagline | Reinforce the product promise. | Impact, Idea |
 
 Video final checks:
 
-- [x] Exported duration is `00:01:56.57`, shorter than `00:03:00`.
+- [x] Exported duration is `00:01:56.60`, shorter than `00:03:00`.
 - [ ] YouTube visibility is **Public**, not Private or Unlisted.
 - [ ] Audio explicitly says “Codex” and “GPT-5.6” and explains distinct contributions.
 - [ ] On-screen text remains readable at normal YouTube playback size.

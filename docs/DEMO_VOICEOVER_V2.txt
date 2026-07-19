@@ -9,7 +9,7 @@ Before analysis, student text passes deterministic K through twelve checks and O
 A harmful response is blocked and hidden from the class.
 The teacher sees the safety decision, while the display never receives the explicit text.
 Now the teacher asks ClassTrek to read the room.
-GPT-5.6 combines de-identified reasoning, the aggregate class pulse, and a teacher-approved NASA source pack into a structured next-scene proposal.
+GPT-5.6 combines de-identified reasoning, the aggregate class pulse, and the teacher-selected source pack into a structured next-scene proposal.
 The server validates every source identifier. The proposal stays in teacher review; the model cannot publish it.
 Only the teacher can approve the branch.
 One decision advances the canonical version, and student and display screens move to the same explanation.

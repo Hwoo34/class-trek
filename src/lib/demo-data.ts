@@ -165,7 +165,7 @@ export const journeyTemplates: JourneyTemplate[] = [
     gradeBand: "Grades 6–8",
     learningGoal:
       "Use evidence to explain how water, atmosphere, and energy constrain human survival on Mars.",
-    hook: "Design a one-night survival plan using NASA evidence.",
+    hook: "Design a one-night survival plan using trusted science sources.",
     accent: "mars",
     sources: demoSources,
     scenes: demoScenes,
@@ -188,7 +188,7 @@ export const journeyTemplates: JourneyTemplate[] = [
     subject: "Earth Systems",
     gradeBand: "Grades 6–8",
     learningGoal:
-      "Use NASA evidence to connect plants, atmospheric moisture, clouds, and rainfall.",
+      "Use trusted Earth science evidence to connect plants, atmospheric moisture, clouds, and rainfall.",
     hook: "Solve the mystery of how a forest helps recycle water.",
     accent: "rainforest",
     sources: rainforestSources,
@@ -240,7 +240,8 @@ export function createDemoSession(
         id: "response-demo-1",
         participantId: "demo-ada",
         alias: "Ada",
-        text: "Water first—NASA found ice, so the crew can melt it.",
+        text:
+          "Water first—the selected science source describes ice beneath parts of the surface.",
         choice: "Liquid water",
         createdAt: new Date().toISOString(),
         safety: "safe",

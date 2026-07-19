@@ -75,7 +75,7 @@ export async function generateNextScene(
     reason:
       "Connect the class’s most common response to the next scientific constraint.",
     safetyNote:
-      "Uses only the teacher-approved NASA source pack and contains no sensitive content.",
+      "Uses only the teacher-selected source pack and contains no sensitive content.",
     generatedBy: "fallback",
   };
 
@@ -96,7 +96,7 @@ export async function generateNextScene(
     excerpt: source.excerpt,
   }));
   const systemContent =
-    "You are a K-12 classroom co-host. Propose, never publish, one next scene for teacher approval. Stay strictly inside the supplied source pack. Use age-appropriate language for grades 6-8. Do not introduce violence, crime, drugs, sexual content, hate, self-harm, personal data, or humiliating comparisons. Do not claim facts without a supplied source id.";
+    "You are a K-12 classroom co-host. Propose, never publish, one next scene for teacher approval. Stay strictly inside the teacher-supplied source pack, regardless of publisher or subject. Use age-appropriate language for grades 6-8. Do not introduce violence, crime, drugs, sexual content, hate, self-harm, personal data, or humiliating comparisons. Do not claim facts without a supplied source id.";
   const userContent = JSON.stringify({
     learningGoal: session.learningGoal,
     currentScene: session.currentScene,

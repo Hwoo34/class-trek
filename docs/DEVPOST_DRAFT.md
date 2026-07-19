@@ -41,7 +41,7 @@ The sample lesson asks whether humans could survive one night on Mars.
 - GPT-5.6 structured output for a grounded next-scene proposal
 - OpenAI Moderation plus deterministic K–12 policy checks
 - Teacher-only approval boundary for AI scenes and student sharing
-- NASA source pack and server-side source ID validation
+- Publisher-neutral, teacher-selected source packs with server-side source ID validation
 - Vitest and multi-context Chrome verification
 
 ## Challenges

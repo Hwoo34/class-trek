@@ -7,7 +7,7 @@ Nova is not racing for points. They react, vote for liquid water, and explain th
 The teacher's live pulse changes as the response arrives. Joined students, choices, questions, and safe reasoning become one readable view of the room.
 The teacher can share a safe idea anonymously, while the classroom display updates without exposing the student's identity.
 Then Mission Control asks ClassTrek to read the room.
-GPT-5.6 combines de-identified student reasoning with the approved NASA source pack. It proposes a structured next scene and cites only server-validated source identifiers.
+GPT-5.6 combines de-identified student reasoning with sources selected for this journey. It proposes a structured next scene and cites only server-validated source identifiers.
 The proposal cannot publish itself. The teacher reads it, checks the evidence, and makes the decision.
 Approve and publish.
 One click advances the canonical lesson version. The teacher screen, Nova's device, and the shared display all move to the same next question.

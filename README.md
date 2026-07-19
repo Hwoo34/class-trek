@@ -13,8 +13,9 @@ explain their thinking, the class pulse changes live, GPT-5.6 proposes a
 source-grounded next teaching move, and the teacher decides whether it reaches
 the room.
 
-The sample experience is a middle-school science mission: **Could our class
-survive one night on Mars?**
+The demo includes three middle-school science journeys—Mars survival, coral
+reef resilience, and rainforest water cycles—with one fully verified live
+classroom path.
 
 ## Live demo
 
@@ -42,8 +43,8 @@ configured to use GPT-5.6.
 - `safe`, `review`, and `blocked` handling; blocked content never enters the
   aggregate or class display.
 - Teacher approval for held student responses and public sharing.
-- GPT-5.6 structured next-scene generation restricted to an approved NASA
-  source pack.
+- GPT-5.6 structured next-scene generation restricted to the source pack
+  selected for the current journey.
 - Source ID validation and a deterministic, teacher-reviewed fallback when the
   AI service is unavailable.
 - Stale-version rejection when a teacher approves an AI proposal.
@@ -237,7 +238,8 @@ The human team retained the key decisions:
 - Keep the teacher as the publishing authority.
 - Share aggregate thinking instead of a public individual leaderboard.
 - Treat source grounding and safety as product behavior, not prompt wording.
-- Scope the entry to one polished Mars lesson.
+- Offer three curated journeys while keeping one fully verified Mars golden
+  path for reliable judging.
 - Use an editorial, classroom-scale interface rather than a chatbot layout.
 - Keep deterministic fallbacks honest and visible.
 
@@ -266,11 +268,11 @@ display contexts. It confirmed:
 - the student and display moved to the same new scene.
 
 The production run additionally confirmed a proposal labeled `gpt-5.6` with
-three server-approved NASA source IDs, three structured choices, and a
-teacher-only review boundary. The request completed in 23.1 seconds; after
-approval, teacher, student, and display surfaces converged on version 24.
+three server-validated source IDs, three structured choices, and a teacher-only
+review boundary. The request completed in 23.1 seconds; after approval,
+teacher, student, and display surfaces converged on version 24.
 
-The suite currently has 22 passing tests across guardrails, provider selection,
+The suite currently has 24 passing tests across guardrails, provider selection,
 class-pulse aggregation, and monotonic session recovery. Provider-selection
 tests also verify that unit tests cannot accidentally spend OpenAI credits. The
 production build and lint checks pass.
@@ -307,8 +309,14 @@ submission checklist and user-owned missing fields.
 
 ## Sources and assets
 
-- Mars facts and lesson claims link to [NASA Science](https://science.nasa.gov/mars/facts/)
-  and [NASA Mars 2020](https://mars.nasa.gov/mars2020/spacecraft/rover/electrical-power/).
+- ClassTrek is publisher-neutral: a teacher can select a curated source pack
+  appropriate to the subject. The demo uses public science material from
+  [NASA Science](https://science.nasa.gov/mars/facts/) for Mars and rainforest
+  journeys and [NOAA Ocean Service](https://oceanservice.noaa.gov/facts/coral_bleach.html)
+  for the reef journey.
+- These organizations provide source material only. They do not endorse,
+  review, or sponsor ClassTrek and are not responsible for its AI-generated
+  output.
 - The interface uses original CSS illustration and open-source Lucide icons.
 - No real student data is included.
 

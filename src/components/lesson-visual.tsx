@@ -30,7 +30,7 @@ export function LessonVisual({ scene, sources }: LessonVisualProps) {
             rel="noreferrer"
           >
             <ShieldCheck size={14} />
-            Grounded in {source.publisher}
+            Source material: {source.publisher}
             <ExternalLink size={12} />
           </a>
         ) : null}

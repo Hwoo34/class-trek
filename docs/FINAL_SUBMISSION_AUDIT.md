@@ -32,7 +32,7 @@ published portfolio page is not yet a completed hackathon submission.
 | Codex used meaningfully | README collaboration history, dated commits, tests, production fixes | Ready |
 | GPT-5.6 used meaningfully | Production structured next-scene generation; actual `gpt-5.6` proposal re-verified after parser hardening | Ready |
 | Project description | Final draft in `docs/DEVPOST_FINAL_DRAFT.md` | Human review required |
-| Demo video | 1:56.57 story-driven edit, English TTS, burned-in English captions, multi-topic planning, live participation, Codex and GPT-5.6 coverage | Local file ready |
+| Demo video | 1:56.60 story-driven edit, English TTS, burned-in English captions, multi-topic planning, student-choice and live-pulse punch-ins, Codex and GPT-5.6 coverage | Local file ready |
 | YouTube visibility | Rules and FAQ say Public; use Public even though the reminder email says Unlisted is acceptable | Missing |
 | Repository | Public MIT repository at <https://github.com/Hwoo34/class-trek> | Ready |
 | README | Setup, test path, sample class, architecture, safety, Codex, GPT-5.6, limitations, license | Ready |
@@ -58,9 +58,9 @@ while it remains public. If it becomes private, share it with both
 ## Video compliance
 
 Final local candidate:
-`artifacts/ClassTrek-demo-v4-story.mp4`
+`artifacts/ClassTrek-demo-v5-participation.mp4`
 
-- Runtime: 1:56.57, below the three-minute limit.
+- Runtime: 1:56.60, below the three-minute limit.
 - Resolution: 1280x720, 30fps, H.264 video and AAC audio, standard BT.709
   limited-range `yuv420p`.
 - English AI-assisted narration is permitted by the FAQ.
@@ -69,7 +69,8 @@ Final local candidate:
   tagline, and the three promises that the working demo then proves.
 - The sequence demonstrates recommended and resumable journeys, Nova joining
   from a separate client, a vote and written reason reaching the live teacher
-  pulse, anonymous sharing, actual GPT-5.6 output, teacher approval,
+  pulse, dedicated punch-ins on the selected vote and updated aggregate,
+  anonymous sharing, actual GPT-5.6 output, teacher approval,
   synchronized clients, reconnect behavior, safety, concrete Codex
   contributions, and human decisions.
 - No API key, access code, explicit blocked text, private dashboard, or

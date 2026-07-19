@@ -44,7 +44,8 @@ export function JourneyPlanner({ session, send }: JourneyPlannerProps) {
         <span>
           <strong>Choose the next learning journey</strong>
           <small>
-            Pick a source-grounded mission, or continue where the class left off.
+            Pick a mission grounded in teacher-selected sources, or continue
+            where the class left off.
           </small>
         </span>
         <ChevronDown className="journey-chevron" size={18} />
@@ -58,7 +59,7 @@ export function JourneyPlanner({ session, send }: JourneyPlannerProps) {
               <h2>Where should the class travel next?</h2>
             </div>
             <span className="tiny-pill">
-              <BookOpen size={12} /> Approved source packs
+              <BookOpen size={12} /> Teacher-selected sources
             </span>
           </div>
 

@@ -11,7 +11,7 @@ Server-Sent Events synchronize all three surfaces, while snapshot recovery handl
 Before analysis, student text passes deterministic K through twelve checks and OpenAI moderation.
 A harmful response is blocked and hidden. The teacher sees the safety decision, while the class never receives the explicit text.
 Now, Mission Control asks ClassTrek to read the room.
-GPT-5.6 combines de-identified reasoning, the live class pulse, and teacher-approved NASA sources into a structured next scene.
+GPT-5.6 combines de-identified reasoning, the live class pulse, and sources selected for the current journey into a structured next scene.
 The server validates every source identifier. The proposal stays in teacher review, and the model cannot publish it.
 Only the teacher can approve the branch.
 One decision advances the canonical version, and every connected screen moves to the same explanation.

@@ -4,7 +4,7 @@ Review date: 2026-07-18 KST
 
 Track: Education
 
-Status: **GO FOR YOUTUBE UPLOAD — working production build and polished V4
+Status: **GO FOR YOUTUBE UPLOAD — working production build and polished V5
 showcase video are ready; external submission items remain**
 
 ## Executive result
@@ -15,7 +15,7 @@ moderated; a class pulse is derived; an AI/fallback proposal waits for teacher
 approval; and all surfaces receive the approved version.
 
 The code, tests, safety contract, README, public repository, protected deployed
-demo, live production GPT-5.6 path, and captioned 1:56.57 story-driven video
+demo, live production GPT-5.6 path, and captioned 1:56.60 story-driven video
 are ready. The public YouTube URL and submitter-owned Devpost fields remain
 blockers.
 
@@ -53,7 +53,7 @@ and make the impact case concrete in the final video and description.
 - [x] Repeated authentication attempts return `429`; model generation is
       limited per client and per day.
 - [x] A paid local smoke test produced a structured proposal labeled
-      `gpt-5.6` with approved NASA source IDs.
+      `gpt-5.6` with server-validated source IDs from the current journey.
 - [x] Production GPT-5.6 returned a structured, source-valid proposal in 23.1
       seconds and remained private until teacher approval.
 - [x] Teacher, student, and display surfaces converged on the approved GPT-5.6
@@ -68,10 +68,10 @@ and make the impact case concrete in the final video and description.
 
 1. **Demo video**
    - No public YouTube URL exists.
-   - A 1:56.57 English TTS story-driven video with burned-in English captions,
-     an original animated intro, three synchronized browser contexts, and
-     smooth transitions is ready at
-     `artifacts/ClassTrek-demo-v4-story.mp4`.
+   - A 1:56.60 English TTS story-driven video with burned-in English captions,
+     an original animated intro, three synchronized browser contexts,
+     student-choice and live-pulse punch-ins, and smooth transitions is ready
+     at `artifacts/ClassTrek-demo-v5-participation.mp4`.
    - Required action: upload as Public, verify it while signed out, and add the
      URL to Devpost.
 

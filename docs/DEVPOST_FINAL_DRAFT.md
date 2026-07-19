@@ -24,14 +24,16 @@ ClassTrek runs one synchronized lesson across three real surfaces:
 - the teacher sees a moderated, de-identified class pulse; and
 - the classroom display shows only approved, privacy-preserving information.
 
-GPT-5.6 combines safe student reasoning, the aggregate pulse, and a
-teacher-approved NASA source pack into a structured proposal for the next
-explanation and question. The server validates the source IDs, and the proposal
-stays private until the teacher approves it. One approval advances the
-canonical lesson version for every connected screen.
+GPT-5.6 combines safe student reasoning, the aggregate pulse, and the
+teacher-selected sources for the current journey into a structured proposal
+for the next explanation and question. The server validates the source IDs,
+and the proposal stays private until the teacher approves it. One approval
+advances the canonical lesson version for every connected screen.
 
-The sample experience is a middle-school science mission: “Could our class
-survive one night on Mars?”
+The demo journey desk includes Mars survival, coral reef resilience, and
+rainforest water cycles. The content provider can change; the product loop
+stays the same: students shape the path, evidence constrains the proposal, and
+the teacher decides.
 
 ## How we built it
 

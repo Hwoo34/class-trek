@@ -1,13 +1,13 @@
 # ClassTrek demo video runbook
 
 > The final product-showcase candidate is
-> `artifacts/ClassTrek-demo-v4-story.mp4` at **1:56.57** with English
+> `artifacts/ClassTrek-demo-v5-participation.mp4` at **1:56.60** with English
 > narration, burned-in English captions, an animated original intro, and
 > smooth transitions between real product recordings. Its final narration is
 > in `docs/DEMO_VOICEOVER_V4.txt`, with the matching subtitle source in
 > `docs/DEMO_CAPTIONS_V4.srt`.
 
-The submitted YouTube video must remain under 3:00 and include audio. The V4
+The submitted YouTube video must remain under 3:00 and include audio. The V5
 candidate is structured as one classroom story rather than a feature tour:
 the teacher previews a recommended topic, resumes an earlier journey, receives
 Nova's live vote and reasoning, shares it anonymously, asks GPT-5.6 to read the
@@ -29,21 +29,21 @@ room, and approves the branch that advances every connected screen.
 - Use only the app's original visuals and voiceover; do not add copyrighted
   music.
 
-## V4 story beats
+## V5 story beats
 
 | Time | Screen and action | Judge-facing purpose |
 |---|---|---|
 | 0:00–0:13 | Animated ClassTrek promise and product keywords. | Identify the product and differentiation immediately. |
 | 0:13–0:26 | Teacher opens Journey Desk, previews recommended `Reef Rescue`, then resumes `Mission Mars`. | Prove topic choice, source-grounded recommendations, and resumable class stories. |
-| 0:26–0:46 | Nova joins on a separate student client, reacts, votes `Liquid water`, and explains the energy connection. Teacher and display remain visible. | Prove real participation across separate browser contexts. |
-| 0:46–1:00 | The response arrives in the teacher's live pulse; the teacher shares the safe idea anonymously. | Show causal realtime updates and privacy-preserving classroom sharing. |
-| 1:00–1:10 | Teacher clicks `Read the room`; an actual proposal labeled `gpt-5.6` appears with approved NASA sources. | Show meaningful GPT-5.6 use and source validation. |
+| 0:26–0:46 | Nova joins on a separate student client, reacts, votes `Liquid water`, and explains the energy connection. A 1.98-second punch-in makes the selected reaction and vote unmistakable. | Prove real participation across separate browser contexts. |
+| 0:46–1:00 | The response arrives in the teacher's live pulse; a 1.78-second punch-in shows `Joined 3`, `Answered 1`, and `Blocked 0` before the teacher shares the safe idea anonymously. | Show causal realtime updates and privacy-preserving classroom sharing. |
+| 1:00–1:10 | Teacher clicks `Read the room`; an actual proposal labeled `gpt-5.6` appears with server-validated sources selected for the current journey. | Show meaningful GPT-5.6 use and publisher-neutral source validation. |
 | 1:10–1:18 | Teacher reviews the proposed branch and clicks `Approve & publish`. | Show that AI cannot publish and the teacher is the decision authority. |
 | 1:18–1:28 | Teacher, Nova, and shared display move to `Finding ice is only the first step`. | Prove one canonical lesson version across connected surfaces. |
 | 1:28–1:37 | Reconnect/recovery view and ClassTrek loop summary. | Demonstrate robustness beyond a slideshow or isolated mockup. |
 | 1:37–1:45 | Safety queue and blocked-content evidence. | Prove classroom guardrails and public-display protection. |
 | 1:45–1:53 | Repository/Codex collaboration evidence. | Name concrete Codex contributions to the working system. |
-| 1:53–1:56.57 | ClassTrek end card and tagline. | Finish on the product promise. |
+| 1:53–1:56.60 | ClassTrek end card and tagline. | Finish on the product promise. |
 
 ## One-take input sheet
 
@@ -63,7 +63,7 @@ room, and approves the branch that advances every connected screen.
 
 ## Final media checks
 
-- [x] Duration is `00:01:56.57`, less than `00:03:00`.
+- [x] Duration is `00:01:56.60`, less than `00:03:00`.
 - [x] Voiceover explicitly explains the product, Codex, and GPT-5.6.
 - [x] Recommended topics, prior-story resume, Nova's vote and reasoning,
       anonymous sharing, the GPT-5.6 badge, teacher approval, blocked item, and

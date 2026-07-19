@@ -8,7 +8,7 @@ Every accepted action updates one versioned, server-authoritative classroom stat
 
 Student text crosses a deterministic K through twelve guardrail and OpenAI moderation before analysis. This harmful request is blocked; the explicit text is never shown on the classroom display.
 
-GPT-5.6 reads the de-identified class pulse and a teacher-approved NASA source pack. It returns a structured next scene, but source identifiers are validated on the server and the model cannot publish.
+GPT-5.6 reads the de-identified class pulse and the teacher-selected source pack. It returns a structured next scene, but source identifiers are validated on the server and the model cannot publish.
 
 Only the teacher can approve the branch. One decision advances the canonical version, and every connected surface moves to the same explanation and follow-up question.
 
