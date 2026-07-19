@@ -54,13 +54,18 @@ export const demoScenes: Scene[] = [
   {
     id: "scene-ice",
     eyebrow: "Mission 02 · Evidence",
-    title: "Finding ice is not the same as having water",
+    title: "Finding ice is only the first step",
     narration:
-      "Evidence shows water ice exists on Mars. But a crew must locate it, extract it, melt it, clean it, and keep it from freezing again. Every step consumes energy.",
+      "Mars has water ice in polar regions and beneath parts of the surface. However, average surface temperatures are well below freezing. A crew would need reliable energy to provide heat and help turn collected ice into liquid water.",
     visual: "ice",
     sourceIds: ["nasa-water", "nasa-energy"],
-    prompt: "What resource is tightly connected to using Martian ice?",
-    choices: ["Energy", "Gravity", "Daylight color"],
+    prompt:
+      "Which evidence pair best explains why a crew planning to use Martian water must also consider reliable energy?",
+    choices: [
+      "Mars has water ice, and missions need energy for heat.",
+      "Mars has a carbon-dioxide atmosphere, and missions need energy for communication.",
+      "Mars is below freezing, and missions need energy for movement.",
+    ],
   },
 ];
 

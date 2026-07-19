@@ -32,7 +32,7 @@ published portfolio page is not yet a completed hackathon submission.
 | Codex used meaningfully | README collaboration history, dated commits, tests, production fixes | Ready |
 | GPT-5.6 used meaningfully | Production structured next-scene generation; actual `gpt-5.6` proposal re-verified after parser hardening | Ready |
 | Project description | Final draft in `docs/DEVPOST_FINAL_DRAFT.md` | Human review required |
-| Demo video | 2:15 product-showcase edit, English TTS, burned-in English captions, working product, Codex and GPT-5.6 coverage | Local file ready |
+| Demo video | 1:56.57 story-driven edit, English TTS, burned-in English captions, multi-topic planning, live participation, Codex and GPT-5.6 coverage | Local file ready |
 | YouTube visibility | Rules and FAQ say Public; use Public even though the reminder email says Unlisted is acceptable | Missing |
 | Repository | Public MIT repository at <https://github.com/Hwoo34/class-trek> | Ready |
 | README | Setup, test path, sample class, architecture, safety, Codex, GPT-5.6, limitations, license | Ready |
@@ -58,18 +58,20 @@ while it remains public. If it becomes private, share it with both
 ## Video compliance
 
 Final local candidate:
-`artifacts/ClassTrek-demo-v3-final.mp4`
+`artifacts/ClassTrek-demo-v4-story.mp4`
 
-- Runtime: 2:15.03, below the three-minute limit.
+- Runtime: 1:56.57, below the three-minute limit.
 - Resolution: 1280x720, 30fps, H.264 video and AAC audio, standard BT.709
   limited-range `yuv420p`.
 - English AI-assisted narration is permitted by the FAQ.
 - Burned-in English captions are included.
 - An original animated ClassTrek intro quickly establishes the product name,
   tagline, and the three promises that the working demo then proves.
-- The sequence demonstrates the problem, a complete working flow, safety,
-  actual GPT-5.6 output, teacher approval, synchronized clients, reconnect
-  behavior, concrete Codex contributions, and human decisions.
+- The sequence demonstrates recommended and resumable journeys, Nova joining
+  from a separate client, a vote and written reason reaching the live teacher
+  pulse, anonymous sharing, actual GPT-5.6 output, teacher approval,
+  synchronized clients, reconnect behavior, safety, concrete Codex
+  contributions, and human decisions.
 - No API key, access code, explicit blocked text, private dashboard, or
   copyrighted music is shown; the quiet ambient bed was generated locally for
   this video.
@@ -86,7 +88,7 @@ Before submitting:
 
 | Criterion | Evidence | Risk |
 |---|---|---|
-| Technological Implementation | Server-authoritative versions, SSE rotation and recovery, Runtime Cache checkpoint, moderation, rate limits, signed teacher session, source validation, SDK-parsed GPT-5.6 structured output, stale approval guard, 22 tests, real production debugging | Low |
+| Technological Implementation | Server-authoritative versions, SSE rotation and recovery, Runtime Cache checkpoint, moderation, rate limits, signed teacher session, source validation, SDK-parsed GPT-5.6 structured output, stale approval guard, 24 tests, real production debugging | Low |
 | Design | Complete teacher, student, and shared-display paths; explicit loading, safety, fallback, approval, and reset behavior | Low |
 | Potential Impact | Specific synchronous-classroom problem and measurable participation/safety signals; no unsupported efficacy claim | Medium: no real classroom study |
 | Quality of the Idea | Teacher-governed live lesson branching differs from fixed slides, quiz leaderboards, and private one-to-one tutors | Low |

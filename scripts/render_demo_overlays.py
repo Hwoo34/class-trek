@@ -48,6 +48,25 @@ SECTION_LABELS_V3 = {
     22: "EDUCATION TRACK",
 }
 
+SECTION_LABELS_V4 = {
+    2: "WATCH ONE CLASS MOVE",
+    3: "TEACHER JOURNEY DESK",
+    4: "MULTIPLE SOURCE-GROUNDED MISSIONS",
+    5: "A STUDENT JOINS",
+    6: "STUDENT THINKING CHANGES THE PATH",
+    7: "LIVE CLASS PULSE",
+    8: "PRIVACY BY DESIGN",
+    9: "MISSION CONTROL READS THE ROOM",
+    10: "ACTUAL GPT-5.6",
+    11: "TEACHER REVIEW REQUIRED",
+    12: "APPROVE & PUBLISH",
+    13: "EVERY SCREEN MOVES TOGETHER",
+    14: "THE CLASSTREK LOOP",
+    15: "SAFETY BEFORE ANALYSIS",
+    16: "BUILT AND VERIFIED WITH CODEX",
+    17: "EDUCATION TRACK",
+}
+
 
 def parse_timestamp(value: str) -> float:
     hours, minutes, rest = value.split(":")
@@ -140,14 +159,20 @@ def main():
         type=Path,
         default=ROOT / "artifacts" / "demo-overlays",
     )
-    parser.add_argument("--version", choices=("v2", "v3"), default="v2")
+    parser.add_argument(
+        "--version",
+        choices=("v2", "v3", "v4"),
+        default="v2",
+    )
     args = parser.parse_args()
 
     args.output.mkdir(parents=True, exist_ok=True)
     cues = parse_srt(args.srt)
-    section_labels = (
-        SECTION_LABELS_V3 if args.version == "v3" else SECTION_LABELS_V2
-    )
+    section_labels = {
+        "v2": SECTION_LABELS_V2,
+        "v3": SECTION_LABELS_V3,
+        "v4": SECTION_LABELS_V4,
+    }[args.version]
     concat_lines = []
 
     for cue in cues:
@@ -155,7 +180,10 @@ def main():
         render_overlay(
             cue,
             section_labels,
-            hide_caption=args.version == "v3" and cue["index"] <= 3,
+            hide_caption=(
+                (args.version == "v3" and cue["index"] <= 3)
+                or (args.version == "v4" and cue["index"] == 1)
+            ),
         ).save(args.output / filename)
         concat_lines.append(f"file '{filename}'")
         concat_lines.append(f"duration {cue['end'] - cue['start']:.6f}")

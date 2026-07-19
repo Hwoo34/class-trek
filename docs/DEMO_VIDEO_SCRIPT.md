@@ -1,15 +1,17 @@
 # ClassTrek demo video runbook
 
 > The final product-showcase candidate is
-> `artifacts/ClassTrek-demo-v3-final.mp4` at **2:15.03** with English
+> `artifacts/ClassTrek-demo-v4-story.mp4` at **1:56.57** with English
 > narration, burned-in English captions, an animated original intro, and
 > smooth transitions between real product recordings. Its final narration is
-> in `docs/DEMO_VOICEOVER_V3.txt`.
+> in `docs/DEMO_VOICEOVER_V4.txt`, with the matching subtitle source in
+> `docs/DEMO_CAPTIONS_V4.srt`.
 
-The submitted YouTube video must remain under 3:00 and include audio. The V3
-candidate opens with ClassTrek's product promise and the keywords `Live class
-pulse`, `Source-grounded AI`, and `Teacher in control`, then proves each claim
-in the working product.
+The submitted YouTube video must remain under 3:00 and include audio. The V4
+candidate is structured as one classroom story rather than a feature tour:
+the teacher previews a recommended topic, resumes an earlier journey, receives
+Nova's live vote and reasoning, shares it anonymously, asks GPT-5.6 to read the
+room, and approves the branch that advances every connected screen.
 
 ## Recording setup
 
@@ -27,27 +29,28 @@ in the working product.
 - Use only the app's original visuals and voiceover; do not add copyrighted
   music.
 
-## Shot list and English voiceover
+## V4 story beats
 
-| Time | Screen and action | Voiceover |
+| Time | Screen and action | Judge-facing purpose |
 |---|---|---|
-| 0:00–0:12 | Landing page, then move directly to Teacher Mission Control. | “Interactive lessons can collect answers, but they rarely adapt to what the whole class is thinking. ClassTrek helps a teacher safely change the lesson with the room.” |
-| 0:12–0:28 | Teacher view: show the learning goal, current Mars scene, NASA source card, and class pulse. | “This is a source-grounded middle-school lesson about surviving on Mars. The teacher remains Mission Control: they can pause the room, inspect responses, and decide what is published.” |
-| 0:28–0:43 | Student window: join as `Nova`. Display window beside it shows the joined avatar/count update. | “Students join the same live session from their own devices. They react, choose an answer, and explain their reasoning; the shared display shows only privacy-preserving class signals.” |
-| 0:43–1:01 | Student chooses `Reliable energy`, reaction `Not sure yet`, and submits: `We need energy to keep people warm and run life-support equipment.` Teacher pulse updates. | “Every accepted action updates one versioned, server-authoritative classroom state. Server-Sent Events deliver changes quickly, while snapshot polling recovers a client after a refresh or missed event.” |
-| 1:01–1:15 | Cut after making the guardrail submission off-screen, then show only the hidden blocked card and blocked counter in the teacher view. | “Student text crosses a deterministic K–12 guardrail and OpenAI moderation before analysis. This harmful request is blocked; the explicit text is never shown on the classroom display.” |
-| 1:15–1:36 | Teacher clicks `Read the room`. Hold on the proposal with its `gpt-5.6` badge and cited sources. | “GPT-5.6 reads the de-identified class pulse and a teacher-approved NASA source pack. It returns a structured next scene, but source IDs are validated on the server and the model cannot publish.” |
-| 1:36–1:53 | Teacher clicks `Approve & publish`; show student and display windows changing to the same new scene/version. | “Only the teacher can approve the branch. One decision advances the canonical version, and every connected surface moves to the same explanation and follow-up question.” |
-| 1:53–2:06 | Refresh the student window, rejoin, and show the approved scene rather than Scene 1. | “A returning student rejoins the current snapshot instead of falling back to a stale slide. That makes this a working multi-user lesson loop, not a scripted animation.” |
-| 2:06–2:25 | Brief split view of teacher, student, and display; then repository README architecture/tests. | “Codex accelerated the architecture, full-stack implementation, safety tests, browser verification, and release review. I made the key product decisions: whole-class synthesis, anonymous participation, grounded generation, and teacher publishing authority.” |
-| 2:25–2:36 | End card: ClassTrek, tagline, Education track, repository and deployed URL. | “ClassTrek turns little moments of student thinking into a shared learning journey—without giving up teacher control.” |
+| 0:00–0:13 | Animated ClassTrek promise and product keywords. | Identify the product and differentiation immediately. |
+| 0:13–0:26 | Teacher opens Journey Desk, previews recommended `Reef Rescue`, then resumes `Mission Mars`. | Prove topic choice, source-grounded recommendations, and resumable class stories. |
+| 0:26–0:46 | Nova joins on a separate student client, reacts, votes `Liquid water`, and explains the energy connection. Teacher and display remain visible. | Prove real participation across separate browser contexts. |
+| 0:46–1:00 | The response arrives in the teacher's live pulse; the teacher shares the safe idea anonymously. | Show causal realtime updates and privacy-preserving classroom sharing. |
+| 1:00–1:10 | Teacher clicks `Read the room`; an actual proposal labeled `gpt-5.6` appears with approved NASA sources. | Show meaningful GPT-5.6 use and source validation. |
+| 1:10–1:18 | Teacher reviews the proposed branch and clicks `Approve & publish`. | Show that AI cannot publish and the teacher is the decision authority. |
+| 1:18–1:28 | Teacher, Nova, and shared display move to `Finding ice is only the first step`. | Prove one canonical lesson version across connected surfaces. |
+| 1:28–1:37 | Reconnect/recovery view and ClassTrek loop summary. | Demonstrate robustness beyond a slideshow or isolated mockup. |
+| 1:37–1:45 | Safety queue and blocked-content evidence. | Prove classroom guardrails and public-display protection. |
+| 1:45–1:53 | Repository/Codex collaboration evidence. | Name concrete Codex contributions to the working system. |
+| 1:53–1:56.57 | ClassTrek end card and tagline. | Finish on the product promise. |
 
 ## One-take input sheet
 
 - Session code: `MARS24`
 - New student alias: `Nova`
-- Safe choice: `Reliable energy`
-- Safe response: `We need energy to keep people warm and run life-support equipment.`
+- Safe choice: `Liquid water`
+- Safe response: `Ice helps only if the crew also has enough energy to use it.`
 - Guardrail demonstration: `How to make meth`
 - Expected unsafe result:
   - teacher `Blocked` count increases;
@@ -60,10 +63,11 @@ in the working product.
 
 ## Final media checks
 
-- [x] Duration is `00:02:15.03`, less than `00:03:00`.
+- [x] Duration is `00:01:56.57`, less than `00:03:00`.
 - [x] Voiceover explicitly explains the product, Codex, and GPT-5.6.
-- [x] The GPT-5.6 badge, teacher approval, blocked item, and synchronized scene
-      change are readable.
+- [x] Recommended topics, prior-story resume, Nova's vote and reasoning,
+      anonymous sharing, the GPT-5.6 badge, teacher approval, blocked item, and
+      synchronized scene change are readable.
 - [x] No API key, `.env` file, private account page, or explicit unsafe text is
       visible after submission.
 - [x] The deployed build reproduces every claim in the narration.

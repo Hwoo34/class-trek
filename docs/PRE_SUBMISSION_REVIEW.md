@@ -4,7 +4,7 @@ Review date: 2026-07-18 KST
 
 Track: Education
 
-Status: **GO FOR YOUTUBE UPLOAD — working production build and polished V3
+Status: **GO FOR YOUTUBE UPLOAD — working production build and polished V4
 showcase video are ready; external submission items remain**
 
 ## Executive result
@@ -15,7 +15,7 @@ moderated; a class pulse is derived; an AI/fallback proposal waits for teacher
 approval; and all surfaces receive the approved version.
 
 The code, tests, safety contract, README, public repository, protected deployed
-demo, live production GPT-5.6 path, and captioned 2:15 product-showcase video
+demo, live production GPT-5.6 path, and captioned 1:56.57 story-driven video
 are ready. The public YouTube URL and submitter-owned Devpost fields remain
 blockers.
 
@@ -34,7 +34,7 @@ and make the impact case concrete in the final video and description.
 
 ## Verified
 
-- [x] `pnpm test`: 8 files, 22 tests passed.
+- [x] `pnpm test`: 8 files, 24 tests passed.
 - [x] `pnpm lint`: passed.
 - [x] `pnpm build`: passed.
 - [x] Production deployment: <https://class-trek.vercel.app>.
@@ -68,9 +68,10 @@ and make the impact case concrete in the final video and description.
 
 1. **Demo video**
    - No public YouTube URL exists.
-   - A 2:15.03 English TTS product-showcase video with burned-in English
-     captions, an original animated intro, real product recordings, and smooth
-     transitions is ready at `artifacts/ClassTrek-demo-v3-final.mp4`.
+   - A 1:56.57 English TTS story-driven video with burned-in English captions,
+     an original animated intro, three synchronized browser contexts, and
+     smooth transitions is ready at
+     `artifacts/ClassTrek-demo-v4-story.mp4`.
    - Required action: upload as Public, verify it while signed out, and add the
      URL to Devpost.
 

@@ -146,7 +146,8 @@ Evidence to build, test, and show:
 - Clear loading, empty, blocked, disconnected, paused, and AI-unavailable states.
 - Accessible interaction: keyboard navigation, visible focus, sufficient contrast, readable type, and non-color-only status cues.
 - Privacy-preserving defaults: anonymous display identities, no public individual ranking, no unapproved free-text broadcast.
-- One polished golden lesson rather than many shallow subjects.
+- Three curated, source-grounded journeys to demonstrate teacher choice, with
+  one fully verified Mars golden path rather than many shallow demos.
 
 Judge-facing proof:
 
@@ -198,28 +199,28 @@ Avoid positioning the project as an AI slide generator, quiz generator, leaderbo
 
 ## Under-three-minute demo storyboard
 
-**Final runtime: 2:15.03. Hard stop before 3:00.** The V3 edit removes typing,
-loading, setup, and silence; opens with a rapid product promise; and uses
-English narration and burned-in captions to explain what was built and how
-both Codex and GPT-5.6 were used.
+**Final runtime: 1:56.57. Hard stop before 3:00.** The V4 edit opens with a
+rapid product promise and follows one causal classroom story. It uses English
+narration and burned-in captions to explain what was built and how both Codex
+and GPT-5.6 were used.
 
 | Time | Screen/action | Narration purpose | Criteria evidence |
 |---|---|---|---|
-| 0:00–0:12 | Title plus teacher problem; immediately show the running product | “Prepared interactive slides cannot adapt to what the whole class is thinking in the moment.” Identify real audience and problem. | Impact, Idea |
-| 0:12–0:28 | Teacher opens a prebuilt “Can humans live on Mars?” lesson; approved sources and learning objective are visible | Explain source-locked, grade-appropriate lesson preparation and teacher review. | Design, Technology |
-| 0:28–0:42 | Students join by code in two visible browser windows; class count updates live | Establish actual multi-user participation, not a mockup. | Technology, Design |
-| 0:42–1:02 | Teacher publishes a prompt; students answer and set confidence concurrently; shared pulse updates | Show synchronized state and privacy-preserving aggregate responses. | Technology, Impact |
-| 1:02–1:16 | One deliberately unsafe/off-topic response is blocked and appears only in the teacher safety queue | Demonstrate educational guardrails without displaying explicit harmful text in the video. | Technology, Design |
-| 1:16–1:38 | Class pulse identifies a misconception; GPT-5.6 produces two source-cited next-scene options | State that GPT-5.6 synthesizes aggregate responses into structured, grounded options. | Technology, Idea |
-| 1:38–1:55 | Teacher edits one option and approves it; all student screens switch together | Show that AI cannot publish autonomously and the teacher controls the lesson. | Design, Technology |
-| 1:55–2:12 | A student disconnects/rejoins or refreshes and recovers the correct current scene | Prove robust real-time implementation beyond the happy-path animation. | Technology |
-| 2:12–2:28 | Students answer the follow-up; confidence distribution changes; teacher closes the lesson | Demonstrate the full loop and an observable, modest outcome. | Impact, Design |
-| 2:28–2:42 | End-of-lesson report: participation, perspectives, source coverage, moderation, and confidence movement | Make impact measurable without claiming unproven learning efficacy. | Impact |
-| 2:42–2:50 | Brief architecture/repository montage and Codex contribution card | Name concrete Codex contributions and the human decisions retained by the team. Mention the repository and runnable judge path. | Technology, Idea |
+| 0:00–0:13 | Animated ClassTrek promise and product keywords | Identify the product and its whole-class differentiation immediately. | Impact, Idea |
+| 0:13–0:26 | Teacher previews recommended `Reef Rescue`, then resumes the class's earlier `Mission Mars` journey | Show topic choice, source-grounded recommendation, and continuity across lessons. | Design, Idea |
+| 0:26–0:46 | Nova joins on a separate student device, reacts, votes, and explains the connection between water and energy | Establish real multi-user participation and reasoning, not a static mockup. | Technology, Design |
+| 0:46–1:00 | Nova's response changes the teacher pulse and is shared anonymously to the room | Show synchronized state and privacy-preserving participation. | Technology, Impact |
+| 1:00–1:10 | Teacher asks ClassTrek to read the room; actual `gpt-5.6` proposal and approved NASA source IDs appear | Prove meaningful, structured, source-grounded GPT-5.6 use. | Technology, Idea |
+| 1:10–1:18 | Teacher reviews the evidence and clicks `Approve & publish` | Prove AI cannot autonomously advance the class. | Design, Technology |
+| 1:18–1:28 | Teacher, student, and shared display move to the same next scene | Show the authoritative lesson version across connected clients. | Technology, Design |
+| 1:28–1:37 | Recovery evidence and ClassTrek loop summary | Demonstrate a working system beyond the happy-path animation. | Technology |
+| 1:37–1:45 | Safety queue and blocked-content evidence | Demonstrate educational guardrails without broadcasting unsafe text. | Technology, Design |
+| 1:45–1:53 | Repository/Codex collaboration montage | Name concrete Codex contributions and retained human decisions. | Technology, Idea |
+| 1:53–1:56.57 | End card and tagline | Reinforce the product promise. | Impact, Idea |
 
 Video final checks:
 
-- [x] Exported duration is `00:02:15.03`, shorter than `00:03:00`.
+- [x] Exported duration is `00:01:56.57`, shorter than `00:03:00`.
 - [ ] YouTube visibility is **Public**, not Private or Unlisted.
 - [ ] Audio explicitly says “Codex” and “GPT-5.6” and explains distinct contributions.
 - [ ] On-screen text remains readable at normal YouTube playback size.
@@ -255,7 +256,8 @@ The public README should be in English and let a judge understand and run the pr
   - [ ] teacher is the publishing authority;
   - [ ] aggregate participation rather than public individual ranking;
   - [ ] safety and grounding fail closed;
-  - [ ] scope limited to a polished golden lesson for reliable judging.
+  - [ ] three curated journeys establish breadth while the Mars journey remains
+        the fully verified golden path for reliable judging.
 - [ ] GPT-5.6 contribution:
   - [ ] exact runtime task(s);
   - [ ] structured-output contract;
