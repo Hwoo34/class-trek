@@ -4,8 +4,8 @@ Review date: 2026-07-19 KST
 
 Track: Education
 
-Status: **GO FOR YOUTUBE UPLOAD — working production build and polished V7
-showcase video are ready; external submission items remain**
+Status: **GO FOR DEVPOST FINAL FIELDS — working production build, repository
+branch, and public V7 showcase video are ready**
 
 ## Executive result
 
@@ -16,7 +16,7 @@ approval; and all surfaces receive the approved version.
 
 The code, tests, safety contract, README, public repository, protected deployed
 demo, live production GPT-5.6 path, and captioned 1:56.60 story-driven video
-are ready. The public YouTube URL and submitter-owned Devpost fields remain
+are ready. Only submitter-owned Devpost fields and final submission remain
 blockers.
 
 ## Judge-criteria review
@@ -66,18 +66,7 @@ and Trek Exchange impact case in one coherent story.
 
 ## Blocking issues
 
-1. **Demo video**
-   - No public YouTube URL exists.
-   - A 1:56.60 English TTS story-driven video with burned-in English captions,
-     an original animated intro, three synchronized browser contexts,
-     student-choice and live-class-pulse punch-ins, and smooth transitions is ready
-     at `artifacts/ClassTrek-demo-v7-final.mp4`, now with corrected English
-     narration and captions, Trek Exchange, a clean ending transition, and
-     explicit teacher/student/class-display borders and labels.
-   - Required action: upload as Public, verify it while signed out, and add the
-     URL to Devpost.
-
-2. **Devpost identity and testing fields**
+1. **Devpost identity and testing fields**
    - Submitter type and country of residence still require user confirmation.
    - Add the production teacher access code only to private field `27949`.
    - `/feedback` Session ID:
@@ -107,7 +96,7 @@ and Trek Exchange impact case in one coherent story.
 | Repository URL | Ready: <https://github.com/Hwoo34/class-trek> |
 | Judge demo URL/instructions | URL ready; add the teacher access code only to the private judge instructions |
 | `/feedback` Session ID | Ready: `019f743b-f708-7352-a6a8-4a1832dcf7e2` |
-| Public YouTube URL | Missing |
+| Public YouTube URL | Ready: <https://youtu.be/Tn5JbPUIx44> |
 
 Do not call the Devpost submit action until all blockers are cleared and the
 final human-owned copy has been reviewed.

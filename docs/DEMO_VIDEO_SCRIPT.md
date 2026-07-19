@@ -80,7 +80,8 @@ advances every connected screen.
 - [x] Every simultaneous teacher/student/display composition has visible
       color-coded borders and role labels.
 - [x] The ambient sound bed is original and contains no copyrighted music.
-- [ ] YouTube visibility is **Public**.
+- [x] YouTube visibility is **Public**:
+      <https://youtu.be/Tn5JbPUIx44>.
 
 ## YouTube upload copy
 

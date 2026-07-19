@@ -323,6 +323,9 @@ The production-hardening plan and acceptance suite are documented in
 See [`docs/DEVPOST_SUBMISSION.md`](docs/DEVPOST_SUBMISSION.md) for the
 submission checklist and user-owned missing fields.
 
+Public demo video:
+[ClassTrek: A Live AI Learning Trek Shaped by the Whole Class](https://youtu.be/Tn5JbPUIx44).
+
 ## Sources and assets
 
 - ClassTrek is publisher-neutral: a teacher can select a curated source pack

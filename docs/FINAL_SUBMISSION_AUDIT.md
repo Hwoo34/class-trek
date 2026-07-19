@@ -14,7 +14,8 @@ Official sources:
 ## Current verdict
 
 **Project: eligible and judge-testable. Submission: not yet complete because
-the hackathon entry still lacks its required video and submitter-owned fields.**
+the hackathon entry still lacks its submitter-owned identity and private
+testing fields.**
 
 The Devpost project profile is now published as
 <https://devpost.com/software/classtrek> with project ID `1335631`, version 3,
@@ -33,8 +34,8 @@ published portfolio page is not yet a completed hackathon submission.
 | Codex used meaningfully | README collaboration history, dated commits, tests, production fixes | Ready |
 | GPT-5.6 used meaningfully | Production structured next-scene generation; actual `gpt-5.6` proposal re-verified after parser hardening | Ready |
 | Project description | Devpost project version 3 matches `docs/DEVPOST_FINAL_DRAFT.md` | Ready; final submitter voice check recommended |
-| Demo video | 1:56.60 story-driven V7 edit, corrected English TTS and captions, Trek Exchange, role-labeled multi-screen scenes, student-choice and live-class-pulse punch-ins, Codex and GPT-5.6 coverage | Local file ready |
-| YouTube visibility | Rules and FAQ say Public; use Public even though the reminder email says Unlisted is acceptable | Missing |
+| Demo video | 1:56.60 story-driven V7 edit, corrected English TTS and captions, Trek Exchange, role-labeled multi-screen scenes, student-choice and live-class-pulse punch-ins, Codex and GPT-5.6 coverage | Public: <https://youtu.be/Tn5JbPUIx44> |
+| YouTube visibility | Public; independently confirmed through YouTube's signed-out oEmbed endpoint | Ready |
 | Repository | Public MIT repository at <https://github.com/Hwoo34/class-trek> | Ready |
 | README | Setup, test path, sample class, architecture, safety, Codex, GPT-5.6, limitations, license | Ready |
 | Judge test access | Free deployed demo; private teacher code must be placed only in Devpost field `27949` | Ready after field entry |
@@ -79,13 +80,13 @@ Final local candidate:
   copyrighted music is shown; the quiet ambient bed was generated locally for
   this video.
 
-Before submitting:
+Completed video publication checks:
 
-1. upload to YouTube as **Public**;
-2. open the video URL in a signed-out private window;
-3. verify 720p playback, audio, captions, and full duration;
-4. paste the URL into the Devpost project and submission; and
-5. re-open the Devpost entry while signed out.
+1. uploaded to YouTube as **Public**;
+2. YouTube reported no copyright issues;
+3. public metadata resolved without an authenticated session; and
+4. video title, 1:56.60 source duration, audio, and burned captions were
+   verified before upload.
 
 ## Judge-criteria assessment
 
@@ -102,7 +103,7 @@ Before submitting:
 - Confirm country of residence.
 - Use primary build session ID `019f743b-f708-7352-a6a8-4a1832dcf7e2`.
 - Review the public description in the submitter's own voice.
-- Upload the final video to YouTube as Public and verify it signed out.
+- Use public video URL <https://youtu.be/Tn5JbPUIx44>.
 - Put the teacher code only in private Devpost testing instructions.
 - Submit and confirm the final state is `Submitted`.
 
