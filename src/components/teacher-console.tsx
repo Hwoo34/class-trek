@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { AppHeader } from "@/components/app-header";
 import { LessonVisual } from "@/components/lesson-visual";
+import { JourneyPlanner } from "@/components/journey-planner";
 import { useClassroomSession } from "@/hooks/use-classroom-session";
 
 interface TeacherConsoleProps {
@@ -180,6 +181,7 @@ export function TeacherConsole({ code }: TeacherConsoleProps) {
         </Link>
       </AppHeader>
       <div className="page">
+        <JourneyPlanner session={session} send={send} />
         <div style={{ marginBottom: 24 }}>
           <p className="eyebrow">ClassTrek · Teacher-controlled live lesson</p>
           <h1 className="page-title">{session.title}</h1>

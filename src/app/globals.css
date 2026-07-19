@@ -133,6 +133,245 @@ a {
   padding: 30px;
 }
 
+.journey-planner {
+  margin-bottom: 24px;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgb(111 76 255 / 8%), rgb(37 213 200 / 9%)),
+    white;
+}
+
+.journey-planner-toggle {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 0;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.journey-planner-toggle strong,
+.journey-planner-toggle small {
+  display: block;
+}
+
+.journey-planner-toggle small {
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+.journey-planner-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 13px;
+  color: white;
+  background: var(--violet);
+  box-shadow: 0 10px 25px rgb(111 76 255 / 25%);
+}
+
+.journey-chevron {
+  transition: transform 180ms ease;
+}
+
+.journey-planner-open .journey-chevron {
+  transform: rotate(180deg);
+}
+
+.journey-planner-body {
+  padding: 8px 18px 20px;
+  border-top: 1px solid var(--line);
+}
+
+.journey-planner-heading,
+.journey-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.journey-planner-heading {
+  margin: 14px 0 16px;
+}
+
+.journey-planner-heading h2 {
+  margin: 0;
+  font-size: 25px;
+  letter-spacing: -0.04em;
+}
+
+.journey-current {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 12px;
+  border: 1px solid rgb(111 76 255 / 17%);
+  border-radius: 16px;
+  background: rgb(255 255 255 / 70%);
+}
+
+.journey-current div:last-child {
+  display: grid;
+  gap: 2px;
+}
+
+.journey-current small,
+.journey-card small,
+.journey-current span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.journey-current strong {
+  font-size: 16px;
+}
+
+.journey-section-heading {
+  margin: 14px 0 10px;
+}
+
+.journey-section-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.journey-section-heading input {
+  width: min(300px, 42vw);
+  min-height: 38px;
+  padding: 8px 12px;
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.journey-card {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 14px;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: rgb(255 255 255 / 82%);
+}
+
+.journey-card h3 {
+  margin: 3px 0 5px;
+  font-size: 18px;
+}
+
+.journey-card p {
+  min-height: 38px;
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.journey-card .button {
+  min-height: 34px;
+  padding: 6px 10px;
+}
+
+.journey-art {
+  position: relative;
+  display: block;
+  min-width: 58px;
+  min-height: 58px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #111827;
+}
+
+.journey-card .journey-art {
+  min-height: 112px;
+}
+
+.journey-art::after {
+  position: absolute;
+  width: 72px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  content: "";
+}
+
+.journey-art-mars::after {
+  right: -18px;
+  bottom: -16px;
+  background: radial-gradient(circle at 35% 30%, #ffc4a0, #b5483c 55%, #5d2124);
+}
+
+.journey-art-ocean {
+  background: linear-gradient(145deg, #082f49, #0891b2);
+}
+
+.journey-art-ocean::after {
+  right: -18px;
+  bottom: -20px;
+  border: 8px solid rgb(103 232 249 / 70%);
+  background: transparent;
+  box-shadow: -32px -21px 0 -18px #f472b6;
+}
+
+.journey-art-rainforest {
+  background: linear-gradient(145deg, #052e16, #15803d);
+}
+
+.journey-art-rainforest::after {
+  right: -12px;
+  bottom: -25px;
+  background: radial-gradient(ellipse at 30% 25%, #bbf7d0, #22c55e 45%, #14532d);
+  transform: rotate(-24deg) scaleX(0.7);
+}
+
+.journey-history {
+  margin-top: 18px;
+  padding-top: 2px;
+  border-top: 1px solid var(--line);
+}
+
+.journey-history-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.journey-history-list button {
+  display: flex;
+  min-width: 230px;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  color: var(--ink);
+  background: white;
+  cursor: pointer;
+  text-align: left;
+}
+
+.journey-history-list button span:first-child {
+  display: grid;
+}
+
+.journey-history-list small {
+  margin-top: 3px;
+  color: var(--muted);
+}
+
 .eyebrow {
   margin: 0 0 9px;
   color: var(--violet);
@@ -390,6 +629,56 @@ textarea:focus-visible {
   background: #111827;
 }
 
+.lesson-hero-ocean {
+  background: linear-gradient(135deg, #082f49, #0e7490 62%, #164e63);
+}
+
+.lesson-hero-rainforest {
+  background: linear-gradient(135deg, #052e16, #166534 62%, #14532d);
+}
+
+.story-orb {
+  position: absolute;
+  z-index: 1;
+  top: 28px;
+  right: -85px;
+  width: 390px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0.76;
+}
+
+.story-orb-mars,
+.story-orb-ice,
+.story-orb-energy {
+  background:
+    radial-gradient(circle at 32% 29%, #ffc4a0 0 5%, transparent 6%),
+    radial-gradient(circle at 58% 64%, #923b31 0 7%, transparent 8%),
+    radial-gradient(circle at 25% 70%, #d36b54 0 10%, transparent 11%),
+    radial-gradient(circle at 35% 30%, #f49470, #b5483c 55%, #5d2124 100%);
+  box-shadow:
+    inset -45px -30px 70px rgb(48 11 21 / 65%),
+    0 0 80px rgb(255 107 94 / 22%);
+}
+
+.story-orb-ocean {
+  border: 34px solid rgb(103 232 249 / 45%);
+  background:
+    radial-gradient(circle at 30% 70%, #f472b6 0 8%, transparent 9%),
+    radial-gradient(circle at 62% 38%, #67e8f9 0 4%, transparent 5%),
+    radial-gradient(circle at 50% 50%, #22d3ee, #0369a1 68%, #082f49);
+  box-shadow: 0 0 90px rgb(34 211 238 / 28%);
+}
+
+.story-orb-rainforest {
+  border-radius: 68% 32% 70% 30% / 45% 58% 42% 55%;
+  background:
+    radial-gradient(circle at 35% 30%, #bbf7d0 0 4%, transparent 5%),
+    linear-gradient(145deg, #4ade80, #15803d 52%, #052e16);
+  box-shadow: 0 0 90px rgb(34 197 94 / 22%);
+  transform: rotate(-18deg);
+}
+
 .lesson-copy {
   position: relative;
   z-index: 3;
@@ -425,15 +714,6 @@ textarea:focus-visible {
   background: rgb(6 10 19 / 45%);
   font-size: 11px;
   font-weight: 700;
-}
-
-.lesson-planet {
-  position: absolute;
-  z-index: 1;
-  top: 28px;
-  right: -85px;
-  width: 390px;
-  opacity: 0.76;
 }
 
 .teacher-toolbar {
@@ -695,11 +975,19 @@ textarea {
   padding: 44px;
 }
 
-.display-stage .mars {
+.display-stage .story-orb {
   top: auto;
   right: -5vw;
   bottom: -12vw;
   width: min(48vw, 650px);
+}
+
+.display-stage-ocean {
+  background: linear-gradient(135deg, #082f49, #0e7490 65%, #164e63);
+}
+
+.display-stage-rainforest {
+  background: linear-gradient(135deg, #052e16, #166534 65%, #14532d);
 }
 
 .display-stage-content {
@@ -853,8 +1141,25 @@ textarea {
     padding: 26px;
   }
 
-  .lesson-planet {
+  .story-orb {
     opacity: 0.3;
+  }
+
+  .journey-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-card {
+    grid-template-columns: 76px 1fr;
+  }
+
+  .journey-section-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .journey-section-heading input {
+    width: 100%;
   }
 
   .display-stage {

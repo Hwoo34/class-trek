@@ -21,7 +21,7 @@ export interface Scene {
   eyebrow: string;
   title: string;
   narration: string;
-  visual: "mars" | "ice" | "energy";
+  visual: "mars" | "ice" | "energy" | "ocean" | "rainforest";
   sourceIds: string[];
   prompt: string;
   choices: string[];
@@ -68,8 +68,21 @@ export interface SuggestedScene extends Scene {
   generatedBy: "gpt-5.6" | "lm-studio" | "fallback";
 }
 
+export interface JourneyHistoryItem {
+  id: string;
+  journeyId: string;
+  title: string;
+  subject: string;
+  learningGoal: string;
+  sceneIndex: number;
+  currentScene: Scene;
+  sources: Source[];
+  savedAt: string;
+}
+
 export interface ClassroomSession {
   code: string;
+  journeyId: string;
   title: string;
   subject: string;
   gradeBand: string;
@@ -83,6 +96,7 @@ export interface ClassroomSession {
   responses: StudentResponse[];
   pulse: ClassPulse;
   pendingSuggestion: SuggestedScene | null;
+  journeyHistory: JourneyHistoryItem[];
   blockedCount: number;
   updatedAt: string;
 }
@@ -103,4 +117,6 @@ export type SessionAction =
   | { type: "dismiss_suggestion" }
   | { type: "approve_response"; responseId: string }
   | { type: "publish_response"; responseId: string }
+  | { type: "select_journey"; journeyId: string }
+  | { type: "resume_journey"; historyId: string }
   | { type: "reset_demo" };

@@ -15,4 +15,33 @@ describe("session store versions", () => {
     expect(reset.version).toBeGreaterThan(changed.version);
     expect(reset.currentScene.id).toBe("scene-arrival");
   });
+
+  it("switches source-grounded journeys and preserves a resumable story", async () => {
+    const mars = await applyAction("MARS24", { type: "reset_demo" });
+    const reef = await applyAction("MARS24", {
+      type: "select_journey",
+      journeyId: "ocean",
+    });
+
+    expect(reef.journeyId).toBe("ocean");
+    expect(reef.title).toBe("Reef Rescue");
+    expect(reef.currentScene.visual).toBe("ocean");
+    expect(reef.sources.every((source) => source.publisher.includes("NOAA"))).toBe(
+      true,
+    );
+    expect(reef.version).toBeGreaterThan(mars.version);
+
+    const savedMars = reef.journeyHistory.find(
+      (item) => item.journeyId === "mars",
+    );
+    expect(savedMars).toBeDefined();
+
+    const resumed = await applyAction("MARS24", {
+      type: "resume_journey",
+      historyId: savedMars?.id ?? "",
+    });
+    expect(resumed.journeyId).toBe("mars");
+    expect(resumed.currentScene.id).toBe("scene-arrival");
+    expect(resumed.version).toBeGreaterThan(reef.version);
+  });
 });

@@ -12,9 +12,12 @@ export function LessonVisual({ scene, sources }: LessonVisualProps) {
   );
 
   return (
-    <section className="card lesson-hero">
+    <section className={`card lesson-hero lesson-hero-${scene.visual}`}>
       <div className="orbit-grid" />
-      <div className="mars lesson-planet" aria-hidden="true" />
+      <div
+        className={`story-orb story-orb-${scene.visual}`}
+        aria-hidden="true"
+      />
       <div className="lesson-copy">
         <p className="eyebrow">{scene.eyebrow}</p>
         <h2>{scene.title}</h2>

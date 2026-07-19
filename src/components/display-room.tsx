@@ -24,9 +24,14 @@ export function DisplayRoom({ code }: DisplayRoomProps) {
 
   return (
     <main className="display-page">
-      <section className="display-stage">
+      <section
+        className={`display-stage display-stage-${session.currentScene.visual}`}
+      >
         <div className="orbit-grid" />
-        <div className="mars" aria-hidden="true" />
+        <div
+          className={`story-orb story-orb-${session.currentScene.visual}`}
+          aria-hidden="true"
+        />
         <div className="display-stage-content">
           <span className="tiny-pill" style={{ color: "white", borderColor: "#ffffff30" }}>
             <Radio size={12} /> {session.title} · {session.status}

@@ -8,7 +8,7 @@ import {
 import { join } from "node:path";
 import { generateNextScene } from "@/lib/ai";
 import { derivePulse } from "@/lib/class-pulse";
-import { createDemoSession } from "@/lib/demo-data";
+import { createDemoSession, getJourneyTemplate } from "@/lib/demo-data";
 import { evaluateSafety } from "@/lib/safety";
 import type {
   ClassroomSession,
@@ -39,6 +39,14 @@ const runtimeDirectory = join(process.cwd(), ".runtime");
 const remoteCacheNamespace = "class-trek-sessions";
 const remoteCacheTtlSeconds = 60 * 60 * 24 * 30;
 
+function normalizeSession(session: ClassroomSession): ClassroomSession {
+  return {
+    ...session,
+    journeyId: session.journeyId ?? "mars",
+    journeyHistory: session.journeyHistory ?? [],
+  };
+}
+
 function sessionPath(code: string): string {
   return join(runtimeDirectory, `session-${code.toUpperCase()}.json`);
 }
@@ -49,7 +57,9 @@ async function readCheckpoint(code: string): Promise<ClassroomSession | null> {
       const { getCache } = await import("@vercel/functions");
       const cache = getCache({ namespace: remoteCacheNamespace });
       const checkpoint = await cache.get(`session:${code.toUpperCase()}`);
-      return checkpoint ? (checkpoint as ClassroomSession) : null;
+      return checkpoint
+        ? normalizeSession(checkpoint as ClassroomSession)
+        : null;
     } catch (error) {
       console.warn("Remote session checkpoint read failed", {
         error: error instanceof Error ? error.message : "unknown-error",
@@ -59,9 +69,9 @@ async function readCheckpoint(code: string): Promise<ClassroomSession | null> {
   }
 
   try {
-    return JSON.parse(
-      readFileSync(sessionPath(code), "utf8"),
-    ) as ClassroomSession;
+    return normalizeSession(
+      JSON.parse(readFileSync(sessionPath(code), "utf8")) as ClassroomSession,
+    );
   } catch {
     return null;
   }
@@ -258,8 +268,64 @@ export async function applyAction(
       response.public = !response.public;
       return publish(session);
     }
+    case "select_journey": {
+      const journey = getJourneyTemplate(action.journeyId);
+      if (!journey) throw new Error("Journey not found");
+
+      const savedCurrent = {
+        id: `${session.journeyId}-${Date.now()}`,
+        journeyId: session.journeyId,
+        title: session.title,
+        subject: session.subject,
+        learningGoal: session.learningGoal,
+        sceneIndex: session.sceneIndex,
+        currentScene: structuredClone(session.currentScene),
+        sources: structuredClone(session.sources),
+        savedAt: new Date().toISOString(),
+      };
+      const history = [
+        savedCurrent,
+        ...session.journeyHistory.filter(
+          (item) => item.journeyId !== session.journeyId,
+        ),
+      ].slice(0, 4);
+      const next = createDemoSession(journey.id, history);
+      next.version = session.version;
+      next.participants = session.participants.map((participant) => ({
+        ...participant,
+        reaction: null,
+      }));
+      next.responses = [];
+      next.pulse = derivePulse(next.participants, next.responses);
+      state.sessions.set(next.code, next);
+      return publish(next);
+    }
+    case "resume_journey": {
+      const saved = session.journeyHistory.find(
+        (item) => item.id === action.historyId,
+      );
+      if (!saved) throw new Error("Saved journey not found");
+
+      session.journeyHistory = session.journeyHistory.filter(
+        (item) => item.id !== saved.id,
+      );
+      session.journeyId = saved.journeyId;
+      session.title = saved.title;
+      session.subject = saved.subject;
+      session.learningGoal = saved.learningGoal;
+      session.sceneIndex = saved.sceneIndex;
+      session.currentScene = structuredClone(saved.currentScene);
+      session.sources = structuredClone(saved.sources);
+      session.responses = [];
+      session.pendingSuggestion = null;
+      session.status = "ready";
+      session.participants.forEach((participant) => {
+        participant.reaction = null;
+      });
+      return publish(session);
+    }
     case "reset_demo": {
-      const reset = createDemoSession();
+      const reset = createDemoSession("mars", session.journeyHistory);
       reset.version = session.version;
       state.sessions.set(reset.code, reset);
       return publish(reset);

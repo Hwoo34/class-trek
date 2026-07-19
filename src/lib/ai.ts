@@ -1,4 +1,4 @@
-import { demoScenes } from "@/lib/demo-data";
+import { getJourneyTemplate } from "@/lib/demo-data";
 import { getGenerationProvider } from "@/lib/ai-provider";
 import type { ClassroomSession, SuggestedScene } from "@/lib/types";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -13,7 +13,7 @@ export const suggestedSceneValidation = z.object({
   prompt: z.string(),
   choices: z.array(z.string()).length(3),
   sourceIds: z.array(z.string()).min(1),
-  visual: z.enum(["mars", "ice", "energy"]),
+  visual: z.enum(["mars", "ice", "energy", "ocean", "rainforest"]),
   safetyNote: z.string(),
 });
 
@@ -38,7 +38,10 @@ const sceneSchema = {
       items: { type: "string" },
       minItems: 1,
     },
-    visual: { type: "string", enum: ["mars", "ice", "energy"] },
+    visual: {
+      type: "string",
+      enum: ["mars", "ice", "energy", "ocean", "rainforest"],
+    },
     safetyNote: { type: "string" },
   },
   required: [
@@ -58,7 +61,12 @@ const sceneSchema = {
 export async function generateNextScene(
   session: ClassroomSession,
 ): Promise<SuggestedScene> {
-  const fallback = demoScenes[Math.min(session.sceneIndex + 1, demoScenes.length - 1)];
+  const journey = getJourneyTemplate(session.journeyId);
+  const journeyScenes = journey?.scenes ?? [session.currentScene];
+  const fallback =
+    journeyScenes[
+      Math.min(session.sceneIndex + 1, journeyScenes.length - 1)
+    ] ?? session.currentScene;
   const fallbackSuggestion: SuggestedScene = {
     ...fallback,
     id: `suggestion-${Date.now()}`,

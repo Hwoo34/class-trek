@@ -27,4 +27,15 @@ describe("classroom action validation", () => {
   it("classifies every model-spending action as teacher-only", () => {
     expect(teacherActionTypes.has("generate_suggestion")).toBe(true);
   });
+
+  it("keeps journey selection and resume teacher-only", () => {
+    expect(
+      parseSessionAction({
+        type: "select_journey",
+        journeyId: "ocean",
+      }),
+    ).toEqual({ type: "select_journey", journeyId: "ocean" });
+    expect(teacherActionTypes.has("select_journey")).toBe(true);
+    expect(teacherActionTypes.has("resume_journey")).toBe(true);
+  });
 });
